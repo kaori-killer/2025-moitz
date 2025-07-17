@@ -1,12 +1,10 @@
 import importPlugin from 'eslint-plugin-import';
-import tseslint from 'typescript-eslint';
 import globals from 'globals';
+import { configs as tsConfigs } from 'typescript-eslint';
 
 export default [
-  // TypeScript 추천 규칙
-  ...tseslint.configs.recommended,
+  ...tsConfigs.recommended,
 
-  // eslint-plugin-import Flat Config 추천 규칙
   importPlugin.flatConfigs.recommended,
   importPlugin.flatConfigs.typescript,
 
@@ -45,10 +43,9 @@ export default [
           pathGroupsExcludedImportTypes: ['builtin'],
         },
       ],
-      // ✅ Flat Config 스펙에 맞게 수정
       'no-restricted-imports': [
         'error',
-        { patterns: ['../*'] }, // ✅ 메시지 제거
+        { patterns: ['../*'] },
       ],
     },
     settings: {

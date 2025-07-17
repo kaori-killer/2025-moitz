@@ -1,14 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client';
-
-import '../styles/global.css';
-import '@/utils/logger';
-import { join } from 'path';
-
-import express from 'express';
-
-import fs from 'fs';
-
 import { css } from '@emotion/react';
 
 export default function App() {
