@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "target": "ES6",
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -7,7 +11,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "jsxImportSource": "@emotion/react"
+    "jsxImportSource": "@emotion/react",
   },
   "include": ["src", "main.tsx"]
 }
