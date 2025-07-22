@@ -9,10 +9,7 @@ on:
 
 jobs:
   build:
-    if: |
-      github.actor == 'kaori-killer' ||
-      github.actor == 'eunsoA' ||
-
+    if: github.actor == 'kaori-killer' || github.actor == 'eunsoA'
     runs-on: ubuntu-latest
 
     defaults:
