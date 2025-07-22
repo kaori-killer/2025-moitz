@@ -4,7 +4,7 @@ import GlobalStyle from '../shared/styles/GlobalStyle';
 export default function App() {
   return (
     <>
-      <Tag text="Hello!" />
+      <Tag text="Hello~!" />
       <GlobalStyle />
     </>
   );
