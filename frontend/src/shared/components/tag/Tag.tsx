@@ -5,7 +5,7 @@ import { inline_flex, flex, typography } from '../../styles/default.styled';
 import * as tag from './tag.styled';
 
 interface TagProps {
-  text: string;
+  text: number;
 }
 
 function Tag({ text }: TagProps) {
