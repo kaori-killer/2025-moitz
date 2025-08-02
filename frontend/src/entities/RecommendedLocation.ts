@@ -1,4 +1,4 @@
-export interface Place {
+export interface RecommendedPlace {
   index: number;
   name: string;
   category: string;
@@ -6,7 +6,7 @@ export interface Place {
   url: string;
 }
 
-export interface Path {
+export interface RecommendedPath {
   index: number;
   startStation: string;
   endStation: string;
@@ -14,25 +14,27 @@ export interface Path {
   travelTime: number;
 }
 
-export interface Route {
+export interface RecommendedRoute {
   startPlace: string;
-  startingX: string;
-  startingY: string;
-  transferCount: string;
+  startingX: number;
+  startingY: number;
+  transferCount: number;
   totalTravelTime: number;
-  paths: Path[];
+  paths: RecommendedPath[];
 }
 
 export interface RecommendedLocation {
   id: number;
   index: number;
-  y: number;
   x: number;
+  y: number;
   name: string;
   avgMinutes: number;
   isBest: boolean;
   description: string;
   reason: string;
-  places: Place[];
-  routes: Route[];
+}
+export interface Location extends RecommendedLocation {
+  places: RecommendedPlace[];
+  routes: RecommendedRoute[];
 }

@@ -1,3 +1,4 @@
+import { RecommendedLocation } from '../../entities/RecommendedLocation';
 import useLocations from '../../entities/useLocations';
 
 const requestBody = {
@@ -13,9 +14,23 @@ function IndexPage() {
   if (error) return <p>에러 발생!</p>;
   if (!locations || locations.length === 0) return <p>추천 결과가 없습니다.</p>;
 
+  const recommendedLocation: RecommendedLocation[] = locations.map(
+    (location) => ({
+      id: location.id,
+      index: location.index,
+      x: location.x,
+      y: location.y,
+      name: location.name,
+      avgMinutes: location.avgMinutes,
+      isBest: location.isBest,
+      description: location.description,
+      reason: location.reason,
+    }),
+  );
+
   return (
     <div>
-      {locations.map((location) => (
+      {recommendedLocation.map((location) => (
         <p key={location.index}>{location.name}</p>
       ))}
     </div>
