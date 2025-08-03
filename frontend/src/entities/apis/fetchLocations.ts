@@ -4,8 +4,10 @@ interface LocationRequestBody {
   requirement: string;
 }
 
+// const BASE_URL = process.env.API_BASE_URL;
+
 const fetchLocations = async (requestBody: LocationRequestBody) => {
-  const response = await fetch('https://dev.api.moitz.kr/locations', {
+  const response = await fetch(`https://dev.api.moitz.kr/locations`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

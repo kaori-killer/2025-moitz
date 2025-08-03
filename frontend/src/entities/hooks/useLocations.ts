@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import fetchLocations from '../entities/fetchLocations';
-
-import { RecommendedLocation } from './RecommendedLocation';
+import fetchLocations from '../apis/fetchLocations';
+import { Location } from '../types/Location';
 
 interface LocationRequestBody {
   startingPlaceNames: string[];
@@ -13,11 +12,11 @@ interface LocationRequestBody {
 const useLocations = (
   requestBody: LocationRequestBody,
 ): {
-  data: RecommendedLocation[];
+  data: Location[];
   loading: boolean;
   error: boolean;
 } => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<Location[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(true);
 

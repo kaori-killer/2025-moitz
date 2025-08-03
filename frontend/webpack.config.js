@@ -1,9 +1,12 @@
-const path = require('path');
+// webpack.config.mjs
+import path from 'path';
+import dotenv from 'dotenv';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpack from 'webpack';
+import { fileURLToPath } from 'url';
 
-const dotenv = require('dotenv');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // .env 파일 읽기
 const envVars = dotenv.config().parsed || {};
@@ -16,7 +19,8 @@ const defineEnv = Object.entries(envVars).reduce((acc, [key, value]) => {
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const config = {
+export default {
+  mode: isProduction ? 'production' : 'development',
   entry: './main.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -29,9 +33,9 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
-      templateParameters: envVars, // HTML에서 <%= BASE_URL %> 사용 가능
+      templateParameters: envVars,
     }),
-    new webpack.DefinePlugin(defineEnv), // JS에서 process.env.BASE_URL 사용 가능
+    new webpack.DefinePlugin(defineEnv),
   ],
   module: {
     rules: [
@@ -46,7 +50,7 @@ const config = {
       },
       {
         test: /\.html$/i,
-        exclude: /index\.html$/, // HtmlWebpackPlugin이 처리하도록 제외
+        exclude: /index\.html$/,
         use: ['html-loader'],
       },
       {
@@ -70,7 +74,3 @@ const config = {
     },
   },
 };
-
-config.mode = isProduction ? 'production' : 'development';
-
-module.exports = config;

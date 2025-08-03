@@ -1,6 +1,6 @@
-import recommendedLocationMock from '../../../../mocks/recommendedLocationsMock';
+import SpotItemList from '@features/recommendation/components/spotItemList/SpotItemList';
 
-import SpotItemList from './SpotItemList';
+import recommendedLocationMock from '../../../../mocks/recommendedLocationsMock';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 

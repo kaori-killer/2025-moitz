@@ -4,9 +4,9 @@
   "name": "webpack-project",
   "type": "module",
   "scripts": {
-    "start": "webpack serve --mode=development --host 0.0.0.0",
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
+    "start": "webpack serve --config webpack.config.js --mode=development --host 0.0.0.0",
+    "build": "webpack --config webpack.config.js --mode=production",
+    "build:dev": "webpack --config webpack.config.js --mode=development",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
     "type": "tsc --noEmit",

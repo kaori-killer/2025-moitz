@@ -17,7 +17,7 @@ export default [
       react: pluginReact,
     },
     languageOptions: {
-      globals: { ...globals.browser, ...globals.jest },
+      globals: { ...globals.browser, ...globals.jest, ...globals.node },
       parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',

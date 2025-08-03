@@ -1,7 +1,7 @@
+import BottomSheet from '@features/recommendation/components/bottomSheet/BottomSheet';
+
 import recommendedLocationsMock from '../../../../mocks/recommendedLocationsMock';
 import startingLocationsMock from '../../../../mocks/startingLocationsMock';
-
-import BottomSheet from './BottomSheet';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
