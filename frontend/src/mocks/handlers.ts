@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
 import { http, HttpResponse } from 'msw';
+
+dotenv.config({ path: '.env' });
 
 export const handlers = [
   http.post('https://dev.api.moitz.kr/locations', async () => {
