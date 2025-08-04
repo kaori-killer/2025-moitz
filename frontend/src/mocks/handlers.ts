@@ -3,8 +3,10 @@ import { http, HttpResponse } from 'msw';
 
 dotenv.config({ path: '.env' });
 
+const BASE_URL = process.env.API_BASE_URL;
+
 export const handlers = [
-  http.post('https://dev.api.moitz.kr/locations', async () => {
+  http.post(`${BASE_URL}/locations`, async () => {
     return HttpResponse.json([
       {
         id: 1,
