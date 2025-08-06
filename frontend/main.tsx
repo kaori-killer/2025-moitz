@@ -1,18 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+
+import IndexPage from '@pages/indexPage/IndexPage';
+import NotFoundPage from '@pages/notFoundPage/NotFoundPage';
+import ResultPage from '@pages/resultPage/ResultPage';
 
 import App from './src/app/App';
-import Layout from './src/shared/components/layout/Layout';
 import GlobalStyle from './src/shared/styles/GlobalStyle';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <IndexPage />,
+      },
+      {
+        path: 'result',
+        element: <ResultPage />,
+      },
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <GlobalStyle />
-    <BrowserRouter>
-      <Layout>
-        <App />
-      </Layout>
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 );

@@ -1,15 +1,11 @@
-import { Route, Routes } from 'react-router';
+import { Outlet } from 'react-router';
 
-import IndexPage from '@pages/indexPage/IndexPage';
-import NotFoundPage from '@pages/notFoundPage/NotFoundPage';
-import ResultPage from '@pages/resultPage/ResultPage';
+import Layout from '@shared/components/layout/Layout';
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<IndexPage />} />
-      <Route path="/result" element={<ResultPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <Layout>
+      <Outlet />
+    </Layout>
   );
 }
