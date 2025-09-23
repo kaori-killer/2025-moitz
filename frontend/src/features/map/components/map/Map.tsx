@@ -28,13 +28,14 @@ interface MapProps {
   changeSelectedLocation: (location: SelectedLocation) => void;
 }
 
+const DURATION = 3000;
 function Map({
   startingLocations,
   recommendedLocations,
   selectedLocation,
   changeSelectedLocation,
 }: MapProps) {
-  const { isVisible, message, showToast } = useToast();
+  const { isVisible, message, showToast } = useToast({ duration: DURATION });
 
   const mapRef = useCustomOverlays({
     startingLocations,
@@ -81,7 +82,7 @@ function Map({
           onClick={handleShareButtonClick}
         />
       </div>
-      <Toast message={message} isVisible={isVisible} />
+      <Toast message={message} isVisible={isVisible} duration={DURATION} />
     </div>
   );
 }

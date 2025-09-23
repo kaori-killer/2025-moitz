@@ -9,13 +9,14 @@ import * as toast from './toast.styled';
 interface ToastProps {
   message: string;
   isVisible: boolean;
+  duration: number;
 }
 
-function Toast({ message, isVisible }: ToastProps) {
+function Toast({ message, isVisible, duration }: ToastProps) {
   if (!isVisible) return null;
 
   return createPortal(
-    <div css={toast.container()}>
+    <div css={[toast.container(), toast.contentWithAnimation(duration)]}>
       <div
         css={[
           toast.content(),

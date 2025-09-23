@@ -1,12 +1,16 @@
 import { useState, useCallback, useEffect } from 'react';
 
+type useToastParams = {
+  duration: number;
+};
+
 type UseToastReturn = {
   isVisible: boolean;
   message: string;
   showToast: (message: string) => void;
 };
 
-export function useToast(): UseToastReturn {
+export function useToast({ duration }: useToastParams): UseToastReturn {
   const [isVisible, setIsVisible] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -23,7 +27,7 @@ export function useToast(): UseToastReturn {
     if (isVisible) {
       const timer = setTimeout(() => {
         hideToast();
-      }, 3000);
+      }, duration);
 
       return () => clearTimeout(timer);
     }

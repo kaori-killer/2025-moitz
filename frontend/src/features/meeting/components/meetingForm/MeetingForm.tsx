@@ -16,6 +16,7 @@ import { ValidationError } from '@shared/types/validationError';
 import ConditionSelector from '../conditionSelector/ConditionSelector';
 import DepartureInput from '../departureInput/DepartureInput';
 
+const DURATION = 500000;
 function MeetingForm() {
   let navigate = useNavigate();
 
@@ -27,7 +28,7 @@ function MeetingForm() {
     updateConditionID,
     validateFormSubmit,
   } = useFormInfo();
-  const { isVisible, message, showToast } = useToast();
+  const { isVisible, message, showToast } = useToast({ duration: DURATION });
 
   const { getRecommendationId } = useLocationsContext();
 
@@ -93,7 +94,7 @@ function MeetingForm() {
         text="모임 지역 찾기"
         active={validateActive()}
       />
-      <Toast message={message} isVisible={isVisible} />
+      <Toast message={message} isVisible={isVisible} duration={DURATION} />
     </form>
   );
 }

@@ -2,27 +2,35 @@ import { css, keyframes } from '@emotion/react';
 
 import { borderRadiusToken, colorToken } from '@shared/styles/tokens';
 
-const slideDown = () => keyframes`
-  0% {
-    transform: translateY(-100%);
+const slideDown = keyframes`
+  from {
     opacity: 0;
+    transform: translateY(-20px);
   }
-  20% {
-    transform: translateY(10px);
+  to {
     opacity: 1;
+    transform: translateY(0);
   }
-  80% {
-    transform: translateY(10px);
+`;
+
+const stay = keyframes`
+  from { opacity: 1; }
+  to { opacity: 1; }
+`;
+
+const slideUp = keyframes`
+  from {
     opacity: 1;
+    transform: translateY(0);
   }
-  100% {
-    transform: translateY(-100%);
+  to {
     opacity: 0;
+    transform: translateY(-20px);
   }
 `;
 
 export const container = () => css`
-  width: fit-content;
+  width: max-content;
   position: fixed;
   top: 20px;
   left: 50%;
@@ -36,7 +44,13 @@ export const content = () => css`
   text-align: center;
   background-color: ${colorToken.gray[7]};
   border-radius: ${borderRadiusToken[100]};
-  animation: ${slideDown()} 3s ease-in-out forwards;
+`;
+
+export const contentWithAnimation = (duration: number) => css`
+  animation:
+    ${slideDown} 300ms ease-out forwards,
+    ${stay} ${duration}ms linear forwards 300ms,
+    ${slideUp} 300ms ease-in forwards ${duration + 300}ms;
 `;
 
 export const text = () => css`
