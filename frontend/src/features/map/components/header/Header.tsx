@@ -21,7 +21,7 @@ interface HeaderProps {
 }
 
 function Header({ selectedLocation, onLocationChange }: HeaderProps) {
-  const { isVisible, message, showToast } = useToast();
+  const { showToast } = useToast();
   const handleBackButtonClick = () => {
     onLocationChange(null);
   };
@@ -59,7 +59,7 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
           onClick={handleShareButtonClick}
         />
       </div>
-      <Toast message={message} isVisible={isVisible} />
+      <Toast />
     </div>
   );
 }

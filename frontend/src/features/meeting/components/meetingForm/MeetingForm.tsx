@@ -27,7 +27,7 @@ function MeetingForm() {
     updateConditionID,
     validateFormSubmit,
   } = useFormInfo();
-  const { isVisible, message, showToast } = useToast();
+  const { showToast } = useToast();
 
   const { getRecommendationFull } = useLocationsContext();
 
@@ -89,7 +89,7 @@ function MeetingForm() {
       </div>
 
       <MeetingFormBottomButton active={isValid} />
-      <Toast message={message} isVisible={isVisible} />
+      <Toast />
     </form>
   );
 }
