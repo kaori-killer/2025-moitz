@@ -7,7 +7,6 @@ import App from '@app/App';
 
 import FallBackPage from '@pages/components/fallBackPage/FallBackPage';
 
-import Toast from '@features/toast/components/Toast';
 import ToastProvider from '@features/toast/contexts/ToastProvider';
 
 import { LocationsProvider } from '@entities/location/contexts/LocationsProvider';
@@ -44,7 +43,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <BrowserRouter>
             <Layout>
               <App />
-              <Toast />
             </Layout>
           </BrowserRouter>
         </ToastProvider>
