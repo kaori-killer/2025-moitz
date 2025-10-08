@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export function useToastState() {
   const [isVisible, setIsVisible] = useState(false);

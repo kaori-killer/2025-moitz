@@ -4,12 +4,12 @@ import { flex, typography } from '@shared/styles/default.styled';
 
 import IconToast from '@icons/icon-toast.svg';
 
-import { useToastContext } from '../hooks/useToastContext';
+import { useToastStateContext } from '../hooks/useToastStateContext';
 
 import * as toast from './toast.styled';
 
 function Toast() {
-  const { isVisible, message } = useToastContext();
+  const { isVisible, message } = useToastStateContext();
 
   if (!isVisible) return null;
 
