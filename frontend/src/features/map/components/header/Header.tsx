@@ -4,7 +4,7 @@ import { SelectedLocation } from '@features/recommendation/types/SelectedLocatio
 import Toast from '@features/toast/components/Toast';
 import { useToast } from '@features/toast/hooks/useToast';
 
-import MapIconButton from '@shared/components/mapButton/MapIconButton';
+import MapIconButton from '@shared/components/mapIconButton/MapIconButton';
 import MapPoint from '@shared/components/mapPoint/MapPoint';
 import { flex } from '@shared/styles/default.styled';
 
