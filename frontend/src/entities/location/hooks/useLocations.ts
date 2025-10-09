@@ -7,7 +7,6 @@ import { Location } from '@entities/location/types/Location';
 
 export type useLocationsReturn = {
   data: Location;
-  isProgressLoading: boolean;
   isLoading: boolean;
   isError: boolean;
   errorMessage: string;
@@ -15,9 +14,7 @@ export type useLocationsReturn = {
     requestBody: RecommendationRequestBody,
   ) => Promise<string>;
   getRecommendationResult: (id: string) => Promise<Location>;
-  getRecommendationFull: (
-    requestBody: RecommendationRequestBody,
-  ) => Promise<{ id: string; data: Location }>;
+  setData: (data: Location) => void;
 };
 
 const initialData: Location = {
@@ -28,8 +25,7 @@ const initialData: Location = {
 
 const useLocations = (): useLocationsReturn => {
   const [data, setData] = useState<Location>(initialData);
-  const [isProgressLoading, setIsProgressLoading] = useState(false); // ProgressLoading 컴포넌트 렌더링 여부
-  const [isLoading, setIsLoading] = useState(false); // 데이터 fetch에 따른 로딩 여부
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -70,37 +66,14 @@ const useLocations = (): useLocationsReturn => {
     }
   }, []);
 
-  const getRecommendationFull = useCallback(
-    async (requestBody: RecommendationRequestBody) => {
-      setIsProgressLoading(true);
-      setData(initialData);
-      try {
-        const newId = await getRecommendationId(requestBody);
-        const newData = await getRecommendationResult(newId);
-
-        await new Promise((resolve) => setTimeout(resolve, 600));
-
-        return { id: newId, data: newData };
-      } catch (error) {
-        setIsError(true);
-        setErrorMessage(error instanceof Error ? error.message : String(error));
-        throw error;
-      } finally {
-        setIsProgressLoading(false);
-      }
-    },
-    [getRecommendationId, getRecommendationResult],
-  );
-
   return {
     data,
-    isProgressLoading,
     isLoading,
     isError,
     errorMessage,
     getRecommendationId,
     getRecommendationResult,
-    getRecommendationFull,
+    setData,
   };
 };
 

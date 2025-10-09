@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 
+import { useRecommendationWithProgress } from '@features/loading/hooks/useRecommendationWithProgress';
 import { useFormInfo } from '@features/meeting/hooks/useFormInfo';
 import Toast from '@features/toast/components/Toast';
 import { useToast } from '@features/toast/hooks/useToast';
 
-import { useLocationsContext } from '@entities/location/contexts/useLocationsContext';
 import { setMeetingStorage } from '@features/meeting/model/meetingStorage';
 
 import { flex } from '@shared/styles/default.styled';
@@ -28,8 +28,7 @@ function MeetingForm() {
     validateFormSubmit,
   } = useFormInfo();
   const { isVisible, message, showToast } = useToast();
-
-  const { getRecommendationFull } = useLocationsContext();
+  const { getRecommendationFull } = useRecommendationWithProgress();
 
   const isValid = React.useMemo(
     () => validateFormSubmit().isValid,

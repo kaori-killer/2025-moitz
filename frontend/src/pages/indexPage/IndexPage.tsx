@@ -1,6 +1,7 @@
 import FallBackPage from '@pages/fallBackPage/FallBackPage';
 
 import ProgressLoading from '@features/loading/components/progressLoading/ProgressLoading';
+import { useRecommendationWithProgress } from '@features/loading/hooks/useRecommendationWithProgress';
 import MeetingForm from '@features/meeting/components/meetingForm/MeetingForm';
 
 import { useLocationsContext } from '@entities/location/contexts/useLocationsContext';
@@ -11,8 +12,8 @@ import { flex, grid_padding, scroll } from '@shared/styles/default.styled';
 import * as indexPage from './indexPage.styled';
 
 function IndexPage() {
-  const { data, isProgressLoading, isError, errorMessage } =
-    useLocationsContext();
+  const { data, isError, errorMessage } = useLocationsContext();
+  const { isProgressLoading } = useRecommendationWithProgress();
 
   if (isError)
     return (
