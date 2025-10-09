@@ -4,8 +4,8 @@ import Badge from '@shared/components/badge/Badge';
 import MarkerIndex from '@shared/components/markerIndex/MarkerIndex';
 import { flex, typography } from '@shared/styles/default.styled';
 
-import RouteCardBar from '../routeCardBar/RouteCardBar';
-import RouteCardDetail from '../routeCardDetail/RouteCardDetail';
+import RouteCardBar from './components/routeCardBar/RouteCardBar';
+import RouteCardDetail from './components/routeCardDetail/RouteCardDetail';
 
 import * as card from './routeCard.styled';
 
