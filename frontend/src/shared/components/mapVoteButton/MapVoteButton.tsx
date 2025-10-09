@@ -5,7 +5,7 @@ import IconVote from '@icons/icon-vote.svg';
 import * as mapVoteButton from './mapVoteButton.styled';
 
 interface MapVoteButtonProps {
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 function MapVoteButton({ onClick }: MapVoteButtonProps) {
