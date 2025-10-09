@@ -1,8 +1,8 @@
 import { shadow } from '@shared/styles/default.styled';
 
 import * as dropdown from './dropdown.styled';
-import DropdownEmpty from './dropdownEmpty/DropdownEmpty';
-import DropdownList from './dropdownList/DropdownList';
+import DropdownEmpty from './components/dropdownEmpty/DropdownEmpty';
+import DropdownList from './components/dropdownList/DropdownList';
 
 interface DropdownProps {
   stations: string[];
