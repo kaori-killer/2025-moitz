@@ -5,7 +5,6 @@ import {
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
 
 import MeetingInfo from '../meetingInfo/MeetingInfo';
-
 import SpotItemList from '../spotItemList/SpotItemList';
 
 interface BottomSheetListProps {
