@@ -6,7 +6,7 @@ import Toast from '@features/toast/components/Toast';
 import { useToast } from '@features/toast/hooks/useToast';
 
 import { useLocationsContext } from '@entities/location/contexts/useLocationsContext';
-import { setMeetingStorage } from '@entities/location/model/meetingStorage';
+import { setMeetingStorage } from '@features/meeting/model/meetingStorage';
 
 import { flex } from '@shared/styles/default.styled';
 
