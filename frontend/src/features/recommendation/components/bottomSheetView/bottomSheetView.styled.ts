@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { colorToken, borderRadiusToken } from '@shared/styles/tokens';
 
 const MIN_VH = 12; // 최소 높이
-const MAX_VH = 90; // 최대 높이
+const MAX_VH = 82; // 최대 높이
 
 export const base = () => css`
   position: fixed;
