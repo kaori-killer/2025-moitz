@@ -1,6 +1,6 @@
 import { RecommendedLocation } from '@entities/location/types/Location';
 
-import SpotItem from '@shared/components/spotItem/SpotItem';
+import SpotItem from '../spotItem/SpotItem';
 import { flex } from '@shared/styles/default.styled';
 
 interface SpotItemListProps {
