@@ -4,15 +4,10 @@ import { useParams, useNavigate } from 'react-router';
 import FallBackPage from '@pages/fallBackPage/FallBackPage';
 
 import BaseLoading from '@features/loading/components/baseLoading/BaseLoading';
-import Header from '@features/map/components/header/Header';
-import Map from '@features/map/components/map/Map';
-import BottomSheet from '@features/recommendation/components/bottomSheet/BottomSheet';
+
+import RecommendationPanel from '@widgets/recommendationPanel/RecommendationPanel';
 
 import { useLocationsContext } from '@entities/location/contexts/useLocationsContext';
-import useSelectedRecommendedLocation from '@features/recommendation/hooks/useSelectedLocation';
-import { RecommendedLocation } from '@entities/location/types/Location';
-
-import { flex } from '@shared/styles/default.styled';
 
 import * as resultPage from './resultPage.styled';
 
@@ -31,7 +26,7 @@ function ResultPage() {
     } catch {
       navigate('/');
     }
-  }, []);
+  }, [id, getRecommendationResult, navigate]);
 
   useEffect(() => {
     if (!id) {
@@ -41,14 +36,7 @@ function ResultPage() {
     if (!location || location.recommendedLocations.length === 0) {
       fetchResult();
     }
-  }, [id, location]);
-
-  const { selectedLocation, changeSelectedLocation } =
-    useSelectedRecommendedLocation();
-
-  const handleSpotClick = (location: RecommendedLocation) => {
-    changeSelectedLocation(location);
-  };
+  }, [id, location, fetchResult, navigate]);
 
   if (isLoading) {
     return <BaseLoading />;
@@ -63,34 +51,13 @@ function ResultPage() {
       />
     );
 
-  const { startingPlaces, recommendedLocations } = location;
-
   return (
     <div css={resultPage.container()}>
-      <Header
-        selectedLocation={selectedLocation}
-        onLocationChange={changeSelectedLocation}
+      <RecommendationPanel
+        startingPlaces={location.startingPlaces}
+        recommendedLocations={location.recommendedLocations}
+        requirement={location.requirement}
       />
-      <div
-        css={[
-          flex({ direction: 'column', justify: 'flex-end' }),
-          resultPage.base(),
-        ]}
-      >
-        <Map
-          startingLocations={startingPlaces}
-          recommendedLocations={recommendedLocations}
-          selectedLocation={selectedLocation}
-          changeSelectedLocation={changeSelectedLocation}
-        />
-        <BottomSheet
-          startingLocations={location.startingPlaces}
-          recommendedLocations={location.recommendedLocations}
-          conditionID={location.requirement}
-          selectedLocation={selectedLocation}
-          handleSpotClick={handleSpotClick}
-        />
-      </div>
     </div>
   );
 }
