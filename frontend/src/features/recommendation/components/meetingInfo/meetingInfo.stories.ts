@@ -4,7 +4,7 @@ import { StartingPlacesMock } from '@mocks/LocationsMock';
 
 import { withContainer } from '@sb/decorators/withContainer';
 
-import MeetingWrapper from './MeetingWrapper';
+import MeetingInfo from './MeetingInfo';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
@@ -12,7 +12,7 @@ const conditionIdList = Object.values(CONDITION_CARD_TEXT).map(
   (condition) => condition.ID,
 );
 const meta = {
-  component: MeetingWrapper,
+  component: MeetingInfo,
   decorators: [withContainer],
   parameters: {
     layout: 'centered',

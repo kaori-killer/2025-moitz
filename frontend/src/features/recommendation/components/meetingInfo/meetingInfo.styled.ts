@@ -17,3 +17,7 @@ export const title = () => css`
 export const content = () => css`
   color: ${colorToken.gray[4]};
 `;
+
+export const nameList = () => css`
+  color: ${colorToken.gray[4]};
+`;

@@ -3,12 +3,12 @@ import { CONDITION_CARD_TEXT } from '@features/meeting/constants/conditionCard';
 import { StartingPlace } from '@entities/location/types/Location';
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
 
-import StartingSpotName from '@shared/components/startingSpotName/StartingSpotName';
+import Dot from '@shared/components/dot/Dot';
 import { flex, typography } from '@shared/styles/default.styled';
 
-import * as meetingWrapper from './meetingWrapper.styled';
+import * as meetingInfo from './meetingInfo.styled';
 
-interface StaringSpotWrapperProps {
+interface MeetingInfoProps {
   startingPlaces: StartingPlace[];
   conditionID: LocationRequirement;
 }
@@ -18,32 +18,33 @@ const getCustomConditionIdText = (id: LocationRequirement) => {
   return entry.ID === 'NOT_SELECTED' ? entry.TEXT : `${entry.TEXT} 장소`;
 };
 
-function MeetingWrapper({
-  startingPlaces,
-  conditionID,
-}: StaringSpotWrapperProps) {
+function MeetingInfo({ startingPlaces, conditionID }: MeetingInfoProps) {
   const conditionIdText = getCustomConditionIdText(conditionID);
 
   return (
-    <div css={[meetingWrapper.base(), flex({ direction: 'column', gap: 10 })]}>
+    <div css={[meetingInfo.base(), flex({ direction: 'column', gap: 10 })]}>
       <div css={[flex({ align: 'center', gap: 10 })]}>
-        <span css={[typography.sh1, meetingWrapper.title()]}>출발지</span>
+        <span css={[typography.sh1, meetingInfo.title()]}>출발지</span>
         <div css={[flex({ wrap: 'wrap', gap: 5 })]}>
           {startingPlaces.map((place, index) => {
             const isLast = startingPlaces.length - 1 === index;
             return (
-              <StartingSpotName
+              <div
                 key={place.index}
-                place={place}
-                isLast={isLast}
-              />
+                css={flex({ justify: 'center', align: 'center', gap: 5 })}
+              >
+                <span css={[typography.b2, meetingInfo.nameList()]}>
+                  {place.name}
+                </span>
+                {!isLast && <Dot size={3} colorType="main" colorTokenIndex={1} />}
+              </div>
             );
           })}
         </div>
       </div>
       <div css={[flex({ align: 'center', gap: 10 })]}>
-        <span css={[typography.sh1, meetingWrapper.title()]}>조건</span>
-        <span css={[typography.b2, meetingWrapper.content()]}>
+        <span css={[typography.sh1, meetingInfo.title()]}>조건</span>
+        <span css={[typography.b2, meetingInfo.content()]}>
           {conditionIdText}
         </span>
       </div>
@@ -51,4 +52,5 @@ function MeetingWrapper({
   );
 }
 
-export default MeetingWrapper;
+export default MeetingInfo;
+

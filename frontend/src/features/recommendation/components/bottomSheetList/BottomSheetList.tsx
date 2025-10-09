@@ -4,7 +4,7 @@ import {
 } from '@entities/location/types/Location';
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
 
-import MeetingWrapper from '@shared/components/meetingWrapper/MeetingWrapper';
+import MeetingInfo from '../meetingInfo/MeetingInfo';
 
 import SpotItemList from '../spotItemList/SpotItemList';
 
@@ -23,10 +23,7 @@ function BottomSheetList({
 }: BottomSheetListProps) {
   return (
     <>
-      <MeetingWrapper
-        startingPlaces={startingPlaces}
-        conditionID={conditionID}
-      />
+      <MeetingInfo startingPlaces={startingPlaces} conditionID={conditionID} />
       <SpotItemList
         recommendedLocations={recommendedLocations}
         onSpotClick={onSpotClick}
