@@ -271,6 +271,7 @@ components/
 
 **적용:**
 - ✅ Dropdown (dropdownEmpty, dropdownList)
+- ✅ ProgressLoading (progressText)
 - ✅ BottomSheet (bottomSheetView, bottomSheetDetail, bottomSheetList)
 - ✅ RouteCard (routeCardBar, routeCardDetail, routeIndicator, routeSegment)
 
@@ -348,6 +349,9 @@ src/
 │
 ├── features/
 │   ├── loading/
+│   │   ├── components/
+│   │   │   └── progressLoading/
+│   │   │       └── components/ (하위 컴포넌트)
 │   │   └── hooks/       (UI 타이밍 로직)
 │   ├── meeting/
 │   │   ├── components/
@@ -408,12 +412,15 @@ src/
 9. ✅ **RouteCard 그룹화**
    - 하위 컴포넌트를 `components/` 폴더로
 
+10. ✅ **ProgressLoading 그룹화**
+    - progressText를 `components/` 폴더로
+
 ### Phase 4: Widget 추가
-10. ✅ **Widget 추가 및 ResultPage 간소화**
+11. ✅ **Widget 추가 및 ResultPage 간소화**
     - `widgets/recommendationPanel/` 생성
     - ResultPage 98줄 → 66줄
 
-11. ✅ **중복 타입 파일 제거**
+12. ✅ **중복 타입 파일 제거**
     - `api/types/` 폴더 삭제
 
 ---
