@@ -1,8 +1,5 @@
-import {
-  LocationRequirement,
-  StartingPlace,
-  RecommendedLocation,
-} from './Location';
+import { StartingPlace, RecommendedLocation } from './Location';
+import { LocationRequirement } from './LocationRequirement';
 
 // ========== 요청 타입 ==========
 export type RecommendationRequestBody = {
