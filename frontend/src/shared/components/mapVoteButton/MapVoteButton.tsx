@@ -16,7 +16,6 @@ function MapVoteButton({ onClick }: MapVoteButtonProps) {
         inline_flex({ justify: 'center', align: 'center', gap: 4 }),
         shadow.map,
         mapVoteButton.base(),
-        mapVoteButton.floating(),
       ]}
       onClick={onClick}
     >

@@ -8,10 +8,3 @@ export const base = () => css`
   color: ${colorToken.gray[1]};
   background-color: ${colorToken.gray[8]};
 `;
-
-export const floating = () => css`
-  position: absolute;
-  top: -50px;
-  right: -20px;
-  transform: translateX(-50%);
-`;

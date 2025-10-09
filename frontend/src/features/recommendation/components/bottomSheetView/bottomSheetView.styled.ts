@@ -30,6 +30,13 @@ export const container = (positionPercent: number) => css`
   border-top-right-radius: ${borderRadiusToken[10]};
 `;
 
+export const voteButtonWrapper = () => css`
+  position: absolute;
+  top: -50px;
+  right: -20px;
+  transform: translateX(-50%);
+`;
+
 export const header = () => css`
   padding: 5px 0px;
   cursor: grab;

@@ -32,7 +32,9 @@ function BottomSheetView({
         // CSS transition이 끝났을 때 호출되는 이벤트 핸들러
         onTransitionEnd={onContainerTransitionEnd}
       >
-        <MapVoteButton onClick={() => {}} />
+        <div css={bottomSheetView.voteButtonWrapper()}>
+          <MapVoteButton onClick={() => {}} />
+        </div>
 
         <div css={[bottomSheetView.header()]} {...handleProps}>
           <span css={[bottomSheetView.handle()]} aria-hidden />
