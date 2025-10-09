@@ -11,6 +11,7 @@ interface MapVoteButtonProps {
 function MapVoteButton({ onClick }: MapVoteButtonProps) {
   return (
     <button
+      type="button"
       css={[
         inline_flex({ justify: 'center', align: 'center', gap: 4 }),
         shadow.map,
