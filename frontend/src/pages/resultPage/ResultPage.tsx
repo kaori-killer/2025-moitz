@@ -9,7 +9,7 @@ import Map from '@features/map/components/map/Map';
 import BottomSheet from '@features/recommendation/components/bottomSheet/BottomSheet';
 
 import { useLocationsContext } from '@entities/location/contexts/useLocationsContext';
-import useSelectedRecommendedLocation from '@entities/location/hooks/useSelectedLocation';
+import useSelectedRecommendedLocation from '@features/recommendation/hooks/useSelectedLocation';
 import { RecommendedLocation } from '@entities/location/types/Location';
 
 import { flex } from '@shared/styles/default.styled';
