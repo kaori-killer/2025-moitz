@@ -8,9 +8,9 @@ import {
 } from '@entities/location/types/Location';
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
 
-import BottomSheetDetail from '../bottomSheetDetail/BottomSheetDetail';
-import BottomSheetList from '../bottomSheetList/BottomSheetList';
-import BottomSheetView from '../bottomSheetView/bottomSheetView';
+import BottomSheetDetail from './components/bottomSheetDetail/BottomSheetDetail';
+import BottomSheetList from './components/bottomSheetList/BottomSheetList';
+import BottomSheetView from './components/bottomSheetView/BottomSheetView';
 
 // 스냅 포인트
 const SNAP_POINTS = [15, 60, 95];
