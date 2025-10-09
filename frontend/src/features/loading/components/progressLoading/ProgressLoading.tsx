@@ -5,7 +5,7 @@ import { LOADING_TEXT } from '@features/loading/constants/loadingText';
 import Progressbar from '@features/progressbar/components/progressbar/Progressbar';
 import { useProgress } from '@features/progressbar/hooks/useProgress';
 
-import ProgressText from '../progressText/ProgressText';
+import ProgressText from './components/progressText/ProgressText';
 
 interface ProgressLoadingProps {
   isReadyToComplete: boolean;
