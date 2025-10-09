@@ -13,7 +13,6 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     onClick: {
-      control: { type: 'object' },
       description: 'MapVoteButton을 클릭했을 때 실행될 함수',
     },
   },
