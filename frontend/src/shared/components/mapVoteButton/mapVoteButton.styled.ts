@@ -10,8 +10,8 @@ export const base = () => css`
 `;
 
 export const floating = () => css`
-  position: fixed;
-  top: 30px;
-  left: 50%;
+  position: absolute;
+  top: -50px;
+  right: -20px;
   transform: translateX(-50%);
 `;

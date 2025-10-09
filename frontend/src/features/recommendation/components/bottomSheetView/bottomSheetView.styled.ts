@@ -23,6 +23,7 @@ export const container = (positionPercent: number) => css`
   min-height: ${MIN_VH}dvh;
   max-height: ${MAX_VH}dvh;
 
+  position: relative;
   padding: 0px 20px;
   background-color: ${colorToken.gray[8]};
   border-top-left-radius: ${borderRadiusToken[10]};
