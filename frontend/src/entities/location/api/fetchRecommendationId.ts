@@ -1,14 +1,14 @@
 import {
   RecommendationRequestBody,
-  RecommendationResponse,
-} from '@entities/location/api/types/RecommendationIdAPI';
+  RecommendationIdResponse,
+} from '@entities/location/types/api';
 
 import { apiClient } from '@shared/api/apiClient';
 
 export const fetchRecommendationId = async (
   requestBody: RecommendationRequestBody,
 ): Promise<string> => {
-  const response = await apiClient.post<RecommendationResponse>(
+  const response = await apiClient.post<RecommendationIdResponse>(
     '/recommendations',
     requestBody,
   );

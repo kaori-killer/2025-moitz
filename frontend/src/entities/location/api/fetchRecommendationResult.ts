@@ -1,17 +1,15 @@
-import { LocationResponse } from '@entities/location/api/types/RecommendationResultAPI';
+import { LocationResponse } from '@entities/location/types/api';
 import { Location } from '@entities/location/types/Location';
+import { mapLocationResponseToDomain } from './mappers/locationMapper';
 
 import { apiClient } from '@shared/api/apiClient';
 
 export const fetchRecommendationResult = async (
   id: string,
 ): Promise<Location> => {
-  const data = await apiClient.get<LocationResponse>(`/recommendations/${id}`);
-  const transformedData: Location = {
-    requirement: data.requirement,
-    startingPlaces: data.startingPlaces,
-    recommendedLocations: data.locations,
-  };
+  const response = await apiClient.get<LocationResponse>(
+    `/recommendations/${id}`,
+  );
 
-  return transformedData;
+  return mapLocationResponseToDomain(response);
 };
