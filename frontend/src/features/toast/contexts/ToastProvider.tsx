@@ -1,5 +1,6 @@
 import { ReactNode, useMemo } from 'react';
 
+import Toast from '../components/Toast';
 import { useToastState } from '../hooks/useToastState';
 
 import { ToastActionsContext } from './ToastActionsContext';
@@ -34,6 +35,7 @@ function ToastProvider({ children }: ToastProviderProps) {
     <ToastActionsContext.Provider value={actions}>
       <ToastStateContext.Provider value={state}>
         {children}
+        <Toast />
       </ToastStateContext.Provider>
     </ToastActionsContext.Provider>
   );

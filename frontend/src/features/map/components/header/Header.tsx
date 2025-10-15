@@ -1,7 +1,6 @@
 import { Link } from 'react-router';
 
 import { SelectedLocation } from '@features/recommendation/types/SelectedLocation';
-import Toast from '@features/toast/components/Toast';
 import { useToastActionsContext } from '@features/toast/hooks/useToastActionsContext';
 
 import MapButton from '@shared/components/mapButton/MapButton';
@@ -59,7 +58,6 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
           onClick={handleShareButtonClick}
         />
       </div>
-      <Toast />
     </div>
   );
 }

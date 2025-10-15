@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 import { useFormInfo } from '@features/meeting/hooks/useFormInfo';
-import Toast from '@features/toast/components/Toast';
 import { useToastActionsContext } from '@features/toast/hooks/useToastActionsContext';
 
 import { useLocationsContext } from '@entities/location/contexts/useLocationsContext';
@@ -89,7 +88,6 @@ function MeetingForm() {
       </div>
 
       <MeetingFormBottomButton active={isValid} />
-      <Toast />
     </form>
   );
 }
