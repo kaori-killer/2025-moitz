@@ -14,7 +14,7 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '\\.(css|less|scss)$': 'identity-obj-proxy',
+    '\\.(css|less|scss)$': '<rootDir>/src/mocks/styleMock.js',
     '^@app/(.*)$': '<rootDir>/src/app/$1',
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@widgets/(.*)$': '<rootDir>/src/widgets/$1',
