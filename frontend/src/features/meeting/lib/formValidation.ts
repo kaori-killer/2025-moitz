@@ -72,7 +72,7 @@ export const validateDuplicateDeparture = (
 
 export const validateForm = (
   departureList: string[],
-  conditionId: string,
+  conditionIds: string[],
 ): ValidationError => {
   const minLengthValidation = validateDepartureListMinLength(
     departureList.length,
@@ -81,7 +81,7 @@ export const validateForm = (
     return minLengthValidation;
   }
 
-  if (!conditionId) {
+  if (conditionIds.length === 0) {
     return {
       isValid: false,
       message: '조건을 선택해주세요',
