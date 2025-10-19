@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router';
 
 import FallBackPage from '@pages/fallBackPage/FallBackPage';
 
-import Modal from '@widgets/modal/components/Modal';
-import useModal from '@widgets/modal/hooks/useModal';
+import Modal from '@features/modal/components/Modal';
+import useModal from '@features/modal/hooks/useModal';
 
 import BaseLoading from '@features/loading/components/baseLoading/BaseLoading';
 import Header from '@features/map/components/header/Header';

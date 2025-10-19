@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Modal from '@features/modal/components/Modal';
+import useModal from '@features/modal/hooks/useModal';
+
 import MapVoteButton from '@shared/components/mapVoteButton/MapVoteButton';
 import { flex, scroll, shadow } from '@shared/styles/default.styled';
 
@@ -20,6 +23,8 @@ function BottomSheetView({
   isAnimating,
   onContainerTransitionEnd,
 }: BottomSheetViewProps) {
+  const { isModalOpen, handleModalOpen, handleModalClose } = useModal();
+
   return (
     <div css={[bottomSheetView.base()]}>
       <div
@@ -33,7 +38,11 @@ function BottomSheetView({
         onTransitionEnd={onContainerTransitionEnd}
       >
         <div css={bottomSheetView.voteButtonWrapper()}>
-          <MapVoteButton onClick={() => {}} />
+          <MapVoteButton
+            onClick={() => {
+              handleModalOpen();
+            }}
+          />
         </div>
 
         <div css={[bottomSheetView.header()]} {...handleProps}>
@@ -50,6 +59,11 @@ function BottomSheetView({
           {children}
         </div>
       </div>
+      {isModalOpen && (
+        <Modal onClose={handleModalClose}>
+          <div>모달 내용을 여기에 작성하세요</div>
+        </Modal>
+      )}
     </div>
   );
 }
