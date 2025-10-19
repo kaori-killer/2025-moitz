@@ -14,6 +14,7 @@ export const backdrop = () => css`
 
 export const base = () => css`
   width: 100%;
+  max-width: 360px;
   padding: 20px;
   background-color: ${colorToken.gray[8]};
   border-radius: ${borderRadiusToken[20]};
