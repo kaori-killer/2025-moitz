@@ -31,8 +31,8 @@ function Modal({ onClose, children }: ModalProps) {
     >
       <div css={[flex({ direction: 'column', gap: 20 }), modal.base()]}>
         <div css={flex({ justify: 'flex-end' })}>
-          <button type="button" onClick={onClose}>
-            <img src={IconCancel} alt="취소 버튼"></img>
+          <button type="button" aria-label="모달 닫기" onClick={onClose}>
+            <img src={IconCancel} alt="취소 버튼" aria-hidden="true" />
           </button>
         </div>
         {children}
