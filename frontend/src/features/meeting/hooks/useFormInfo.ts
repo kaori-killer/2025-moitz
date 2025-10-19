@@ -14,7 +14,7 @@ import { ValidationError } from '@shared/types/validationError';
 
 type UseFormInfoReturn = {
   departureList: string[];
-  conditionID: LocationRequirement;
+  conditionIDs: LocationRequirement[];
   addDepartureWithValidation: (departure: string) => ValidationError;
   removeDepartureAtIndex: (index: number) => void;
   updateConditionID: (condition: LocationRequirement) => void;
@@ -26,8 +26,8 @@ export function useFormInfo(): UseFormInfoReturn {
   const [departureList, setDepartureList] = useState<string[]>(
     storage.departureList,
   );
-  const [conditionID, setConditionID] = useState<LocationRequirement>(
-    storage.conditionID,
+  const [conditionIDs, setConditionIDs] = useState<LocationRequirement[]>(
+    storage.conditionIDs,
   );
 
   const addDepartureWithValidation = (departure: string): ValidationError => {
@@ -60,16 +60,21 @@ export function useFormInfo(): UseFormInfoReturn {
   };
 
   const updateConditionID = (condition: LocationRequirement) => {
-    setConditionID(condition);
+    setConditionIDs((prev) => {
+      if (prev.includes(condition)) {
+        return prev.filter((id) => id !== condition);
+      }
+      return [...prev, condition];
+    });
   };
 
   const validateFormSubmit = (): ValidationError => {
-    return validateForm(departureList, conditionID);
+    return validateForm(departureList, conditionIDs);
   };
 
   return {
     departureList,
-    conditionID,
+    conditionIDs,
     addDepartureWithValidation,
     removeDepartureAtIndex,
     updateConditionID,
