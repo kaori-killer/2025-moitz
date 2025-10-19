@@ -50,7 +50,7 @@ export type RecommendedLocation = {
 };
 
 export type Location = {
-  requirement: LocationRequirement;
+  requirements: LocationRequirement[];
   startingPlaces: StartingPlace[];
   recommendedLocations: RecommendedLocation[];
 };

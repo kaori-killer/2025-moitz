@@ -69,7 +69,7 @@ export const RecommendedLocationsMock: RecommendedLocation[] = [
 ];
 
 export const LocationsMock: LocationResponse = {
-  requirement: 'FOCUS',
+  requirements: ['CAFE', 'STUDY_CAFE'],
   startingPlaces: [
     {
       id: 1,
