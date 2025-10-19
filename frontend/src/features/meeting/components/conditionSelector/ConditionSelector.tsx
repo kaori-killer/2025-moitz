@@ -7,12 +7,12 @@ import InputFormSection from '../meetingFormSection/MeetingFormSection';
 import * as conditionSelector from './conditionSelector.styled';
 
 interface ConditionSelectorProps {
-  selectedConditionID: string;
+  selectedConditionIDs: string[];
   onSelect: (condition: string) => void;
 }
 
 function ConditionSelector({
-  selectedConditionID,
+  selectedConditionIDs,
   onSelect,
 }: ConditionSelectorProps) {
   const handleConditionCardClick = (condition: string) => {
@@ -30,7 +30,7 @@ function ConditionSelector({
             key={condition.ID}
             iconText={condition.ICON}
             contentText={condition.TEXT}
-            isSelected={selectedConditionID === condition.ID}
+            isSelected={selectedConditionIDs.includes(condition.ID)}
             onClick={() => handleConditionCardClick(condition.ID)}
           />
         ))}

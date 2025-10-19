@@ -23,10 +23,9 @@ const meta = {
       control: { type: 'object' },
       description: '출발지 이름 목록',
     },
-    conditionID: {
-      control: { type: 'select' },
-      options: conditionIdList,
-      description: '출발지 조건',
+    conditionIDs: {
+      control: { type: 'object' },
+      description: '출발지 조건들',
     },
   },
 } satisfies Meta<typeof MeetingWrapper>;
@@ -37,7 +36,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     startingPlaces: StartingPlacesMock,
-    conditionID: 'CHAT',
+    conditionIDs: ['CAFE'],
   },
 };
 
@@ -61,6 +60,6 @@ export const Long: Story = {
       { index: 14, name: '을지로5가역', id: 14, x: 14, y: 14 },
       { index: 15, name: '을지로6가역', id: 15, x: 15, y: 15 },
     ],
-    conditionID: 'CHAT',
+    conditionIDs: ['CAFE'],
   },
 };
