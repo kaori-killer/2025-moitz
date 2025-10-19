@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { flex, grid_padding } from '@shared/styles/default.styled';
+import { flex, grid_padding, shadow } from '@shared/styles/default.styled';
 
 import IconCancel from '@icons/icon-cancel-gray.svg';
 
@@ -25,6 +25,7 @@ function Modal({ onClose, children }: ModalProps) {
         flex({ direction: 'column', justify: 'center', align: 'center' }),
         modal.backdrop(),
         grid_padding,
+        shadow.dropdown,
       ]}
       onClick={handleBackdropClick}
     >
