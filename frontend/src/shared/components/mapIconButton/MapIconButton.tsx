@@ -1,14 +1,14 @@
 import { flex, shadow } from '@shared/styles/default.styled';
 
-import * as mapButton from './mapButton.styled';
+import * as mapButton from './mapIconButton.styled';
 
-interface MapButtonProps {
+interface MapIconButtonProps {
   src: string;
   alt: string;
   onClick?: () => void;
 }
 
-function MapButton({ src, alt, onClick }: MapButtonProps) {
+function MapIconButton({ src, alt, onClick }: MapIconButtonProps) {
   return (
     <button
       css={[
@@ -23,4 +23,4 @@ function MapButton({ src, alt, onClick }: MapButtonProps) {
   );
 }
 
-export default MapButton;
+export default MapIconButton;
