@@ -1,12 +1,12 @@
 import IconBack from '@icons/icon-back.svg';
 import IconShare from '@icons/icon-share.svg';
 
-import MapButton from './MapButton';
+import MapIconButton from './MapIconButton';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta = {
-  component: MapButton,
+  component: MapIconButton,
   parameters: {
     layout: 'centered',
   },
@@ -24,7 +24,7 @@ const meta = {
       action: 'onClick',
     },
   },
-} satisfies Meta<typeof MapButton>;
+} satisfies Meta<typeof MapIconButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
