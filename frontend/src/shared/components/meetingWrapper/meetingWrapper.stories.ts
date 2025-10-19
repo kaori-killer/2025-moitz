@@ -8,9 +8,6 @@ import MeetingWrapper from './MeetingWrapper';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
-const conditionIdList = Object.values(CONDITION_CARD_TEXT).map(
-  (condition) => condition.ID,
-);
 const meta = {
   component: MeetingWrapper,
   decorators: [withContainer],
