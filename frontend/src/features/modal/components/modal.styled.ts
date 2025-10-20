@@ -10,6 +10,10 @@ export const backdrop = () => css`
   left: 0;
   z-index: 100;
   background-color: ${colorToken.blur};
+  user-select: none;
+  touch-action: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 `;
 
 export const base = () => css`
