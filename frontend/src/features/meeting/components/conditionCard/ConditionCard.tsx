@@ -25,7 +25,7 @@ function ConditionCard({
       type="button"
       onClick={onClick}
     >
-      <div css={[typography.b1, conditionCard.text()]}>{iconText}</div>
+      <div css={[typography.b1, conditionCard.icon()]}>{iconText}</div>
       <div css={[typography.b1, conditionCard.text()]}>{contentText}</div>
     </button>
   );

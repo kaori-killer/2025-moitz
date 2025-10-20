@@ -21,6 +21,7 @@ function ConditionSelector({
 
   return (
     <InputFormSection
+      iconText={INPUT_FORM_TEXT.CONDITION.ICON}
       titleText={INPUT_FORM_TEXT.CONDITION.TITLE}
       descriptionText={INPUT_FORM_TEXT.CONDITION.DESCRIPTION}
     >
