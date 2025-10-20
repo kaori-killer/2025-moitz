@@ -34,6 +34,7 @@ function Modal({ onClose, children }: ModalProps) {
   return (
     <div
       role="dialog"
+      aria-modal="true"
       css={[
         flex({ direction: 'column', justify: 'center', align: 'center' }),
         modal.backdrop(),
