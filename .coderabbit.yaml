@@ -16,6 +16,9 @@ reviews:
     auto_incremental_review: false
     drafts: false
     ignore_updates: true
+    base_branches:
+      - 'fe-prod'
+      - 'fe-dev'
 
 path_filters:
   - '!frontend/node_modules/'
