@@ -9,6 +9,7 @@ describe('Modal', () => {
   const user = userEvent.setup();
 
   beforeEach(() => {
+    document.body.style.overflow = '';
     mockOnClose.mockClear();
   });
 
