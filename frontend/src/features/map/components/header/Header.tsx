@@ -1,8 +1,7 @@
 import { Link } from 'react-router';
 
 import { SelectedLocation } from '@features/recommendation/types/SelectedLocation';
-import Toast from '@features/toast/components/Toast';
-import { useToast } from '@features/toast/hooks/useToast';
+import { useToastActionsContext } from '@features/toast/hooks/useToastActionsContext';
 
 import MapIconButton from '@shared/components/mapIconButton/MapIconButton';
 import MapPoint from '@shared/components/mapPoint/MapPoint';
@@ -21,7 +20,7 @@ interface HeaderProps {
 }
 
 function Header({ selectedLocation, onLocationChange }: HeaderProps) {
-  const { isVisible, message, showToast } = useToast();
+  const { showToast } = useToastActionsContext();
   const handleBackButtonClick = () => {
     onLocationChange(null);
   };
@@ -59,7 +58,6 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
           onClick={handleShareButtonClick}
         />
       </div>
-      <Toast message={message} isVisible={isVisible} />
     </div>
   );
 }
