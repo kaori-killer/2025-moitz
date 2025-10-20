@@ -35,14 +35,14 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
     <div css={[header.base()]}>
       <div css={[flex({ justify: 'space-between' }), header.top()]}>
         {!selectedLocation && (
-          <Link to="/">
-            <MapIconButton src={IconBack} alt="back" />
+          <Link aria-label="홈으로 이동" to="/">
+            <MapIconButton src={IconBack} alt="뒤로 가기" />
           </Link>
         )}
         {selectedLocation && (
           <MapIconButton
             src={IconBack}
-            alt="back"
+            alt="뒤로 가기"
             onClick={handleBackButtonClick}
           />
         )}
@@ -55,7 +55,7 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
         />
         <MapIconButton
           src={IconShare}
-          alt="share"
+          alt="공유하기"
           onClick={handleShareButtonClick}
         />
       </div>
