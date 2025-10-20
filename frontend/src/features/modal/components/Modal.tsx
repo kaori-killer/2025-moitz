@@ -19,8 +19,11 @@ function Modal({ onClose, children }: ModalProps) {
       }
     };
 
+    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleEscKey);
+
     return () => {
+      document.body.style.overflow = '';
       window.removeEventListener('keydown', handleEscKey);
     };
   }, [onClose]);
