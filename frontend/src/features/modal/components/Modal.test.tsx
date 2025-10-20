@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Modal from './Modal';
@@ -55,6 +55,17 @@ describe('Modal', () => {
 
       // then
       expect(mockOnClose).not.toHaveBeenCalled();
+    });
+
+    it('ESC 키를 누르면 모달이 닫힌다', () => {
+      // given
+      renderModal();
+
+      // when
+      fireEvent.keyDown(document, { key: 'Escape' });
+
+      // then
+      expect(mockOnClose).toHaveBeenCalledTimes(1);
     });
   });
 });
