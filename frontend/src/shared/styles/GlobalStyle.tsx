@@ -12,6 +12,15 @@ function GlobalStyle() {
         styles={css`
           * {
             font-family: 'Pretendard';
+            font-family:
+              'Pretendard',
+              -apple-system,
+              BlinkMacSystemFont,
+              'Segoe UI',
+              Roboto,
+              'Helvetica Neue',
+              Arial,
+              sans-serif;
           }
         `}
       />
