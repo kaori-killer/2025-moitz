@@ -20,6 +20,27 @@ describe('Modal', () => {
     );
   };
 
+  describe('모달 backdrop 스크롤', () => {
+    it('모달이 열리면 뒷 배경이 스크롤되지 않는다.', () => {
+      // given
+      renderModal();
+
+      // then
+      expect(document.body.style.overflow).toBe('hidden');
+    });
+
+    it('모달이 닫히면 뒷 배경이 다시 스크롤된다.', () => {
+      // given
+      const { unmount } = renderModal();
+
+      // when
+      unmount();
+
+      // then
+      expect(document.body.style.overflow).toBe('');
+    });
+  });
+
   describe('모달 닫기', () => {
     it('취소 버튼을 클릭하면 모달이 닫힌다', async () => {
       // given
