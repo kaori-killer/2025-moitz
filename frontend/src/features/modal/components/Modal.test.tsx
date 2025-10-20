@@ -24,9 +24,7 @@ describe('Modal', () => {
     it('취소 버튼을 클릭하면 모달이 닫힌다', async () => {
       // given
       renderModal();
-      const cancelButton = screen.getByRole('button', {
-        name: '취소 버튼',
-      });
+      const cancelButton = screen.getByLabelText('모달 닫기');
 
       // when
       await user.click(cancelButton);
