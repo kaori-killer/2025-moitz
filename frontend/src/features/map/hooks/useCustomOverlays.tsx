@@ -1,6 +1,14 @@
 /* eslint-disable no-undef */
 import { useEffect, useRef } from 'react';
 
+type NaverMapOptions = {
+  center: naver.maps.LatLng;
+  zoom: number;
+  scaleControl?: boolean;
+  logoControl?: boolean;
+  mapDataControl?: boolean;
+};
+
 import {
   createCustomOverlay,
   type CustomOverlayInstance,
@@ -60,10 +68,15 @@ export const useCustomOverlays = ({
       );
       const center = new naver.maps.LatLng(centerCoord.y - 0.1, centerCoord.x);
 
-      naverMapRef.current = new naver.maps.Map(mapRef.current, {
+      const mapOptions: NaverMapOptions = {
         center,
         zoom: 11,
-      });
+        scaleControl: false,
+        logoControl: false,
+        mapDataControl: false,
+      };
+
+      naverMapRef.current = new naver.maps.Map(mapRef.current, mapOptions);
     }
 
     // 기존 오버레이 제거
