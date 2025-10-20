@@ -31,6 +31,7 @@ function ConditionSelector({
             key={condition.ID}
             iconText={condition.ICON}
             contentText={condition.TEXT}
+            descriptionText={condition.DESCRIPTION}
             isSelected={selectedConditionIDs.includes(condition.ID)}
             onClick={() => handleConditionCardClick(condition.ID)}
           />

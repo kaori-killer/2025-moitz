@@ -31,3 +31,10 @@ export const Default: Story = {
     onSelect: () => {},
   },
 };
+
+export const WithSelectedConditions: Story = {
+  args: {
+    selectedConditionIDs: ['CAFE', 'RESTAURANT'],
+    onSelect: () => {},
+  },
+};

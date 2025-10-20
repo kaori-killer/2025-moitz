@@ -13,7 +13,7 @@ type ConditionCardText = Record<
 export const CONDITION_CARD_TEXT: ConditionCardText = {
   CAFE: {
     ID: 'CAFE',
-    ICON: '☕',
+    ICON: '☕️',
     TEXT: '카페',
   },
   RESTAURANT: {

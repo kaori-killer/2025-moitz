@@ -22,6 +22,10 @@ export const text = () => css`
   color: ${colorToken.gray[2]};
 `;
 
+export const description = () => css`
+  color: ${colorToken.gray[5]};
+`;
+
 export const selected = () => css`
   background-color: ${colorToken.main[4]};
   box-shadow: 0 0 0 2px ${colorToken.main[1]};
