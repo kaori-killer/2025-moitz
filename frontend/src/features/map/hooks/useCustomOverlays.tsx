@@ -1,14 +1,6 @@
 /* eslint-disable no-undef */
 import { useEffect, useRef } from 'react';
 
-type NaverMapOptions = {
-  center: naver.maps.LatLng;
-  zoom: number;
-  scaleControl?: boolean;
-  logoControl?: boolean;
-  mapDataControl?: boolean;
-};
-
 import {
   createCustomOverlay,
   type CustomOverlayInstance,
@@ -30,6 +22,14 @@ interface UseCustomOverlaysProps {
   selectedLocation: RecommendedLocation | null;
   changeSelectedLocation: (loc: RecommendedLocation) => void;
 }
+
+type NaverMapOptions = {
+  center: naver.maps.LatLng;
+  zoom: number;
+  scaleControl?: boolean;
+  logoControl?: boolean;
+  mapDataControl?: boolean;
+};
 
 /* ===========================================
  * useCustomOverlays
