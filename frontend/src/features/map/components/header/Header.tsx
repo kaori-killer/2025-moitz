@@ -1,5 +1,5 @@
-import { Link } from 'react-router';
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router';
 
 import { SelectedLocation } from '@features/recommendation/types/SelectedLocation';
 import { useToastActionsContext } from '@features/toast/hooks/useToastActionsContext';
