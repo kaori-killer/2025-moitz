@@ -1,8 +1,8 @@
-name: FE dev CD (dev)
+name: FE dev CD (fe-dev)
 
 on:
   push:
-    branches: [dev]
+    branches: [fe-dev]
     paths: ['frontend/**']
   workflow_dispatch:
 
