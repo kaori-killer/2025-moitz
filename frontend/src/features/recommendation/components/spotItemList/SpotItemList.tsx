@@ -17,11 +17,7 @@ function SpotItemList({
       {recommendedLocations.map((location) => {
         const { index, name, description, avgMinutes, isBest } = location;
         return (
-          <li
-            role="listitem"
-            aria-label={`${index + 1}번째 추천 장소는 ${name} 입니다`}
-            key={index}
-          >
+          <li key={index} role="listitem">
             <SpotItem
               index={index}
               name={name}
