@@ -13,22 +13,27 @@ function SpotItemList({
   onSpotClick,
 }: SpotItemListProps) {
   return (
-    <div css={[flex({ direction: 'column', gap: 20 })]}>
+    <ul role="list" css={[flex({ direction: 'column', gap: 20 })]}>
       {recommendedLocations.map((location) => {
         const { index, name, description, avgMinutes, isBest } = location;
         return (
-          <SpotItem
+          <li
+            role="listitem"
+            aria-label={`${index + 1}번째 추천 장소는 ${name} 입니다`}
             key={index}
-            index={index}
-            name={name}
-            description={description}
-            avgMinutes={avgMinutes}
-            isBest={isBest}
-            onClick={() => onSpotClick(location)}
-          />
+          >
+            <SpotItem
+              index={index}
+              name={name}
+              description={description}
+              avgMinutes={avgMinutes}
+              isBest={isBest}
+              onClick={() => onSpotClick(location)}
+            />
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }
 
