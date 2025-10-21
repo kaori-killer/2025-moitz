@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { useRef, useEffect } from 'react';
 
 import { SelectedLocation } from '@features/recommendation/types/SelectedLocation';
 import Toast from '@features/toast/components/Toast';
@@ -22,6 +23,14 @@ interface HeaderProps {
 
 function Header({ selectedLocation, onLocationChange }: HeaderProps) {
   const { isVisible, message, showToast } = useToast();
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      headerRef.current.focus();
+    }
+  }, [selectedLocation]);
+
   const handleBackButtonClick = () => {
     onLocationChange(null);
   };
@@ -32,7 +41,7 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
   };
 
   return (
-    <div css={[header.base()]}>
+    <div ref={headerRef} css={[header.base()]} tabIndex={-1}>
       <div css={[flex({ justify: 'space-between' }), header.top()]}>
         {!selectedLocation && (
           <Link aria-label="홈으로 이동" to="/">
