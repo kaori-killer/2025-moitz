@@ -4,7 +4,7 @@ import { StartingPlace } from '@entities/location/types/Location';
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
 
 import StartingSpotName from '@shared/components/startingSpotName/StartingSpotName';
-import { flex, typography } from '@shared/styles/default.styled';
+import { flex, sr_only, typography } from '@shared/styles/default.styled';
 
 import * as meetingWrapper from './meetingWrapper.styled';
 
@@ -33,32 +33,30 @@ function MeetingWrapper({
       aria-label="모임 정보"
       css={[meetingWrapper.base(), flex({ direction: 'column', gap: 10 })]}
     >
-      <div
-        role="text"
-        aria-label={`출발지는 ${startingPlacesText} 입니다`}
-        css={[flex({ align: 'center', gap: 10 })]}
-      >
-        <span css={[typography.sh1, meetingWrapper.title()]}>출발지</span>
-        <ul css={[flex({ wrap: 'wrap', gap: 5 })]}>
-          {startingPlaces.map((place, index) => {
-            const isLast = startingPlaces.length - 1 === index;
-            return (
-              <li key={place.index}>
-                <StartingSpotName place={place} isLast={isLast} />
-              </li>
-            );
-          })}
-        </ul>
+      <div>
+        <span css={sr_only}>{`출발지는 ${startingPlacesText} 입니다`}</span>
+        <div aria-hidden="true" css={[flex({ align: 'center', gap: 10 })]}>
+          <span css={[typography.sh1, meetingWrapper.title()]}>출발지</span>
+          <ul css={[flex({ wrap: 'wrap', gap: 5 })]}>
+            {startingPlaces.map((place, index) => {
+              const isLast = startingPlaces.length - 1 === index;
+              return (
+                <li key={place.index}>
+                  <StartingSpotName place={place} isLast={isLast} />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-      <div
-        role="text"
-        aria-label={`모임 조건은 ${conditionIdText} 입니다`}
-        css={[flex({ align: 'center', gap: 10 })]}
-      >
-        <span css={[typography.sh1, meetingWrapper.title()]}>조건</span>
-        <span css={[typography.b2, meetingWrapper.content()]}>
-          {conditionIdText}
-        </span>
+      <div>
+        <span css={sr_only}>{`모임 조건은 ${conditionIdText} 입니다`}</span>
+        <div aria-hidden="true" css={[flex({ align: 'center', gap: 10 })]}>
+          <span css={[typography.sh1, meetingWrapper.title()]}>조건</span>
+          <span css={[typography.b2, meetingWrapper.content()]}>
+            {conditionIdText}
+          </span>
+        </div>
       </div>
     </section>
   );
