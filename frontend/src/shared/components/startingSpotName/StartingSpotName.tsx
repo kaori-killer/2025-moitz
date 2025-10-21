@@ -14,7 +14,6 @@ interface StartSpotNameProps {
 function StartingSpotName({ place, isLast }: StartSpotNameProps) {
   return (
     <div
-      key={place.index}
       css={flex({
         justify: 'center',
         align: 'center',

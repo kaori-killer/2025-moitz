@@ -24,30 +24,43 @@ function MeetingWrapper({
 }: StaringSpotWrapperProps) {
   const conditionIdText = getCustomConditionIdText(conditionID);
 
+  const startingPlacesText = startingPlaces
+    .map((place) => place.name)
+    .join(', ');
+
   return (
-    <div css={[meetingWrapper.base(), flex({ direction: 'column', gap: 10 })]}>
-      <div css={[flex({ align: 'center', gap: 10 })]}>
+    <section
+      aria-label="모임 정보"
+      css={[meetingWrapper.base(), flex({ direction: 'column', gap: 10 })]}
+    >
+      <div
+        role="text"
+        aria-label={`출발지는 ${startingPlacesText} 입니다`}
+        css={[flex({ align: 'center', gap: 10 })]}
+      >
         <span css={[typography.sh1, meetingWrapper.title()]}>출발지</span>
-        <div css={[flex({ wrap: 'wrap', gap: 5 })]}>
+        <ul css={[flex({ wrap: 'wrap', gap: 5 })]}>
           {startingPlaces.map((place, index) => {
             const isLast = startingPlaces.length - 1 === index;
             return (
-              <StartingSpotName
-                key={place.index}
-                place={place}
-                isLast={isLast}
-              />
+              <li key={place.index}>
+                <StartingSpotName place={place} isLast={isLast} />
+              </li>
             );
           })}
-        </div>
+        </ul>
       </div>
-      <div css={[flex({ align: 'center', gap: 10 })]}>
+      <div
+        role="text"
+        aria-label={`모임 조건은 ${conditionIdText} 입니다`}
+        css={[flex({ align: 'center', gap: 10 })]}
+      >
         <span css={[typography.sh1, meetingWrapper.title()]}>조건</span>
         <span css={[typography.b2, meetingWrapper.content()]}>
           {conditionIdText}
         </span>
       </div>
-    </div>
+    </section>
   );
 }
 
