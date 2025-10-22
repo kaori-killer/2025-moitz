@@ -1,12 +1,6 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-type UseToastReturn = {
-  isVisible: boolean;
-  message: string;
-  showToast: (message: string) => void;
-};
-
-export function useToast(): UseToastReturn {
+export function useToastState() {
   const [isVisible, setIsVisible] = useState(false);
   const [message, setMessage] = useState('');
 
@@ -33,5 +27,6 @@ export function useToast(): UseToastReturn {
     isVisible,
     message,
     showToast,
+    hideToast,
   };
 }

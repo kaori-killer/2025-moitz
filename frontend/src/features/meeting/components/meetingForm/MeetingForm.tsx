@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 import { useFormInfo } from '@features/meeting/hooks/useFormInfo';
-import Toast from '@features/toast/components/Toast';
-import { useToast } from '@features/toast/hooks/useToast';
+import { useToastActionsContext } from '@features/toast/hooks/useToastActionsContext';
 
 import { useLocationsContext } from '@entities/location/contexts/useLocationsContext';
 import { setMeetingStorage } from '@entities/location/model/meetingStorage';
@@ -27,7 +26,7 @@ function MeetingForm() {
     updateConditionID,
     validateFormSubmit,
   } = useFormInfo();
-  const { isVisible, message, showToast } = useToast();
+  const { showToast } = useToastActionsContext();
 
   const { getRecommendationFull } = useLocationsContext();
 
@@ -89,7 +88,6 @@ function MeetingForm() {
       </div>
 
       <MeetingFormBottomButton active={isValid} />
-      <Toast message={message} isVisible={isVisible} />
     </form>
   );
 }
