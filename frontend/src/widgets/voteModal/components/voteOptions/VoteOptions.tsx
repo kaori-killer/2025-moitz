@@ -16,14 +16,14 @@ const VOTE_OPTIONS = [
 ];
 
 function VoteOptions() {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleOptionChange = (id: string) => {
-    setSelectedOptions((prev) => {
-      if (prev.includes(id)) {
-        return prev.filter((optionId) => optionId !== id);
+    setSelectedOption((optionId) => {
+      if (optionId === id) {
+        return '';
       }
-      return [...prev, id];
+      return id;
     });
   };
 
@@ -34,7 +34,7 @@ function VoteOptions() {
         voteOptions.candidateListWrapper(),
       ]}
     >
-      <ResetButton onReset={() => setSelectedOptions([])} />
+      <ResetButton onReset={() => {}} />
 
       <form
         css={[
@@ -46,7 +46,7 @@ function VoteOptions() {
           <VoteOption
             key={option.id}
             option={option}
-            isSelected={selectedOptions.includes(option.id)}
+            isSelected={selectedOption === option.id}
             onToggle={handleOptionChange}
           />
         ))}
