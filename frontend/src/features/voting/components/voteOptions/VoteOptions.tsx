@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import ResetButton from '@shared/components/ResetButton/ResetButton';
+import RefreshButton from '@shared/components/RefreshButton/RefreshButton';
 import { flex } from '@shared/styles/default.styled';
 
 import VoteOption from '../voteOption/VoteOption';
@@ -34,7 +34,7 @@ function VoteOptions() {
         voteOptions.candidateListWrapper(),
       ]}
     >
-      <ResetButton onReset={() => {}} />
+      <RefreshButton onRefresh={() => {}} />
 
       <form
         css={[
