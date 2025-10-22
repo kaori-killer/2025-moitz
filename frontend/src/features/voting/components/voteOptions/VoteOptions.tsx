@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
+import ResetButton from '@shared/components/ResetButton/ResetButton';
 import { flex } from '@shared/styles/default.styled';
 
-import ResetButton from '../resetButton/ResetButton';
 import VoteOption from '../voteOption/VoteOption';
 
 import * as voteOptions from './voteOptions.styled';

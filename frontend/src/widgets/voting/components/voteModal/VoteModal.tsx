@@ -1,11 +1,12 @@
 import Modal from '@features/modal/components/Modal';
+import VoteOptions from '@features/voting/components/voteOptions/VoteOptions';
 
 import BottomButton from '@shared/components/bottomButton/BottomButton';
 import { flex } from '@shared/styles/default.styled';
 
-import VoteHeader from './voteHeader/VoteHeader';
+import VoteHeader from '../voteHeader/VoteHeader';
+
 import * as voteModal from './voteModal.styled';
-import VoteOptions from './voteOptions/VoteOptions';
 
 interface VoteModalProps {
   onClose: () => void;
