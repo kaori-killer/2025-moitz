@@ -39,6 +39,16 @@ function BottomSheetDetail({
         </div>
       </DetailSection>
 
+      <DetailSection isHeader={false} title={'추천 장소'} isBestBadge={false}>
+        <div css={[flex(), scroll, bottomSheetDetail.placeList()]}>
+          {Object.keys(selectedLocation.places).map((category) =>
+            selectedLocation.places[category].map((place) => (
+              <PlaceCard key={place.index} place={place} />
+            )),
+          )}
+        </div>
+      </DetailSection>
+
       <DetailSection
         isHeader={false}
         title={'각 출발지로부터 이동 방법'}
@@ -57,16 +67,6 @@ function BottomSheetDetail({
               route={route}
             />
           ))}
-        </div>
-      </DetailSection>
-
-      <DetailSection isHeader={false} title={'추천 장소'} isBestBadge={false}>
-        <div css={[flex(), scroll, bottomSheetDetail.placeList()]}>
-          {Object.keys(selectedLocation.places).map((category) =>
-            selectedLocation.places[category].map((place) => (
-              <PlaceCard key={place.index} place={place} />
-            )),
-          )}
         </div>
       </DetailSection>
     </div>
