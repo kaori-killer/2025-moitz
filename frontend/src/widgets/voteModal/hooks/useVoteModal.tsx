@@ -4,17 +4,14 @@ import VoteModal from '../components/VoteModal';
 
 const useVoteModal = () => {
   const openVoteModal = () => {
-    return new Promise<void>((resolve) => {
-      modal.open(({ unmount }) => {
-        return (
-          <VoteModal
-            onClose={() => {
-              resolve();
-              unmount();
-            }}
-          />
-        );
-      });
+    modal.open(({ unmount }) => {
+      return (
+        <VoteModal
+          onClose={() => {
+            unmount();
+          }}
+        />
+      );
     });
   };
 
