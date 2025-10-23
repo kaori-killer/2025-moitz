@@ -45,7 +45,9 @@ function SpotItem({
           </div>
           <span css={typography.c1}>평균 {avgMinutes}분</span>
         </div>
-        <p css={[typography.c1, spotItem.description()]}>{description}</p>
+        <p css={[flex(), typography.c1, spotItem.description()]}>
+          {description}
+        </p>
       </div>
     </button>
   );
