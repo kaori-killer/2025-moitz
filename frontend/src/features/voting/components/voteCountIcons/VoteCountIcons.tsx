@@ -15,7 +15,8 @@ function VoteCountIcons({ count }: VoteCountIconsProps) {
         <img
           key={index}
           src={IconVoteUser}
-          alt="투표 유저 아이콘"
+          alt=""
+          aria-hidden="true"
           css={voteCountIcons.voteCountIcon({
             zIndex: count - index,
           })}

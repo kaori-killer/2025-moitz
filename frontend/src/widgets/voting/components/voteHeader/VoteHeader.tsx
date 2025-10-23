@@ -14,7 +14,7 @@ function VoteHeader({ title, description, subDescription }: VoteHeaderProps) {
   return (
     <header css={flex({ direction: 'column', align: 'center', gap: 10 })}>
       <div css={flex({ align: 'center', gap: 10 })}>
-        <img src={IconLogo} alt="로고 아이콘" css={voteHeader.icon()} />
+        <img src={IconLogo} alt="" css={voteHeader.icon()} aria-hidden="true" />
         <h1 css={[typography.h1, voteHeader.title()]}>{title}</h1>
       </div>
       <div css={flex({ direction: 'column', align: 'center', gap: 5 })}>

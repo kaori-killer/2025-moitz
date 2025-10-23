@@ -36,6 +36,11 @@ function VoteOptions() {
     >
       <RefreshButton onRefresh={() => {}} />
 
+      <div className="visually-hidden">
+        투표 옵션 목록. 라디오 버튼으로 하나만 선택 가능합니다. 다른 옵션을
+        선택하면 이전 선택이 해제됩니다.
+      </div>
+
       <form
         css={[
           flex({ direction: 'column', align: 'center', gap: 5 }),
