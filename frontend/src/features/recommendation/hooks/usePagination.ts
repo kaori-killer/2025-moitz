@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 interface usePaginationParams {
   totalItems: number;
@@ -43,7 +43,7 @@ export function usePagination({
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   // key가 변경되면 페이지를 초기화
-  useMemo(() => {
+  useEffect(() => {
     if (key !== undefined) {
       setCurrentPage(initialPage);
     }
