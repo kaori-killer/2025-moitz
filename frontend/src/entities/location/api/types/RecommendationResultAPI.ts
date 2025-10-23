@@ -10,10 +10,13 @@ export type StartingPlaceResponse = {
 
 export type RecommendedPlaceResponse = {
   index: number;
+  x: number;
+  y: number;
   name: string;
   category: string;
   walkingTime: number;
-  url: string;
+  placeUrl: string;
+  imageUrl: string | null;
 };
 
 export type RecommendedPathResponse = {
@@ -45,7 +48,9 @@ export type RecommendedLocationResponse = {
   isBest: boolean;
   description: string;
   reason: string;
-  places?: RecommendedPlaceResponse[];
+  places?: {
+    [key in LocationRequirement]?: RecommendedPlaceResponse[];
+  };
   routes?: RecommendedRouteResponse[];
 };
 
