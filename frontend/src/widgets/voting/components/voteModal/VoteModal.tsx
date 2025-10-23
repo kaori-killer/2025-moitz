@@ -32,7 +32,6 @@ function VoteModal({ onClose, recommendationId }: VoteModalProps) {
 
   const handleVoteClick = async () => {
     await handleVote(recommendationId, updateVoteCount);
-    onClose();
   };
 
   if (isError) {
