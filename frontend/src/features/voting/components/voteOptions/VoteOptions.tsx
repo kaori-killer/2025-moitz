@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import BottomButton from '@shared/components/bottomButton/BottomButton';
 import RefreshButton from '@shared/components/RefreshButton/RefreshButton';
 import { flex } from '@shared/styles/default.styled';
 
@@ -15,7 +16,11 @@ const VOTE_OPTIONS = [
   { id: 'itaewon', name: '이태원역', count: 4 },
 ];
 
-function VoteOptions() {
+interface VoteOptionsProps {
+  onClose: () => void;
+}
+
+function VoteOptions({ onClose }: VoteOptionsProps) {
   const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleOptionChange = (id: string) => {
@@ -57,6 +62,12 @@ function VoteOptions() {
             onToggle={handleOptionChange}
           />
         ))}
+        <BottomButton
+          text={'투표하기'}
+          onClick={onClose}
+          type="button"
+          active={true}
+        />
       </form>
     </section>
   );
