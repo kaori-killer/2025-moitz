@@ -20,7 +20,7 @@ function MeetingForm() {
 
   const {
     departureList,
-    conditionID,
+    conditionIDs,
     addDepartureWithValidation,
     removeDepartureAtIndex,
     updateConditionID,
@@ -32,7 +32,7 @@ function MeetingForm() {
 
   const isValid = React.useMemo(
     () => validateFormSubmit().isValid,
-    [departureList, conditionID],
+    [departureList, conditionIDs],
   );
 
   const showValidationError = (error: ValidationError) => {
@@ -61,7 +61,7 @@ function MeetingForm() {
     try {
       const { id } = await getRecommendationFull({
         startingPlaceNames: departureList,
-        requirement: conditionID,
+        requirements: conditionIDs,
       });
 
       if (id) navigate(`/result/${id}`);
@@ -69,7 +69,7 @@ function MeetingForm() {
       showToast('모임 지역 찾기에 실패했습니다.');
     }
 
-    setMeetingStorage({ departureList, conditionID });
+    setMeetingStorage({ departureList, conditionIDs });
   };
 
   return (
@@ -82,7 +82,7 @@ function MeetingForm() {
         />
 
         <ConditionSelector
-          selectedConditionID={conditionID}
+          selectedConditionIDs={conditionIDs}
           onSelect={updateConditionID}
         />
       </div>

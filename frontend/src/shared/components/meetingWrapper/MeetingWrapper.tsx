@@ -3,6 +3,7 @@ import { CONDITION_CARD_TEXT } from '@features/meeting/constants/conditionCard';
 import { StartingPlace } from '@entities/location/types/Location';
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
 
+import SeparatedText from '@shared/components/separatedText/SeparatedText';
 import StartingSpotName from '@shared/components/startingSpotName/StartingSpotName';
 import { flex, typography } from '@shared/styles/default.styled';
 
@@ -10,19 +11,21 @@ import * as meetingWrapper from './meetingWrapper.styled';
 
 interface StaringSpotWrapperProps {
   startingPlaces: StartingPlace[];
-  conditionID: LocationRequirement;
+  conditionIDs: LocationRequirement[];
 }
 
 const getCustomConditionIdText = (id: LocationRequirement) => {
   const entry = CONDITION_CARD_TEXT[id];
-  return entry.ID === 'NOT_SELECTED' ? entry.TEXT : `${entry.TEXT} 장소`;
+  return `${entry.TEXT}`;
 };
 
 function MeetingWrapper({
   startingPlaces,
-  conditionID,
+  conditionIDs,
 }: StaringSpotWrapperProps) {
-  const conditionIdText = getCustomConditionIdText(conditionID);
+  const conditionIdTexts = conditionIDs.map((id) =>
+    getCustomConditionIdText(id),
+  );
 
   return (
     <div css={[meetingWrapper.base(), flex({ direction: 'column', gap: 10 })]}>
@@ -43,9 +46,18 @@ function MeetingWrapper({
       </div>
       <div css={[flex({ align: 'center', gap: 10 })]}>
         <span css={[typography.sh1, meetingWrapper.title()]}>조건</span>
-        <span css={[typography.b2, meetingWrapper.content()]}>
-          {conditionIdText}
-        </span>
+        <div css={[flex({ wrap: 'wrap', gap: 5 })]}>
+          {conditionIdTexts.map((text, index) => {
+            const isLast = conditionIdTexts.length - 1 === index;
+            return (
+              <SeparatedText key={index} isLast={isLast}>
+                <span css={[typography.b2, meetingWrapper.content()]}>
+                  {text}
+                </span>
+              </SeparatedText>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

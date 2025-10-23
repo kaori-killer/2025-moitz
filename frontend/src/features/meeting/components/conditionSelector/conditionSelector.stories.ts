@@ -12,9 +12,9 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    selectedConditionID: {
-      control: { type: 'text' },
-      description: '조건 ID',
+    selectedConditionIDs: {
+      control: { type: 'object' },
+      description: '선택된 조건 ID들',
     },
     onSelect: {
       description: '조건 ID 업데이트 시 실행될 함수',
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    selectedConditionID: '',
+    selectedConditionIDs: [],
     onSelect: () => {},
   },
 };
