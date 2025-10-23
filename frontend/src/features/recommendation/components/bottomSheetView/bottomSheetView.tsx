@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useVoteModal from '@widgets/voteModal/hooks/useVoteModal';
+import useVoteModal from '@widgets/voting/hooks/useVoteModal';
 
 import MapVoteButton from '@shared/components/mapVoteButton/MapVoteButton';
 import { flex, scroll, shadow } from '@shared/styles/default.styled';
