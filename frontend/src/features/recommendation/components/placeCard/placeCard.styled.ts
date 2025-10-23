@@ -4,7 +4,6 @@ import { borderRadiusToken, colorToken } from '@shared/styles/tokens';
 
 export const base = () => css`
   width: 170px;
-  min-width: 170px;
   cursor: pointer;
 `;
 
