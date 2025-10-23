@@ -6,9 +6,7 @@ import { apiClient } from '@shared/api/apiClient';
 export const fetchRecommendationResult = async (
   id: string,
 ): Promise<Location> => {
-  const data = await apiClient.get<LocationResponse>(
-    `/recommendations/test/legacy/${id}`,
-  );
+  const data = await apiClient.get<LocationResponse>(`/recommendations/${id}`);
   const transformedData: Location = {
     requirement: data.requirement,
     startingPlaces: data.startingPlaces,

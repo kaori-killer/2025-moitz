@@ -9,7 +9,7 @@ export const fetchRecommendationId = async (
   requestBody: RecommendationRequestBody,
 ): Promise<string> => {
   const response = await apiClient.post<RecommendationResponse>(
-    '/recommendations/test/legacy',
+    '/recommendations',
     requestBody,
   );
 
