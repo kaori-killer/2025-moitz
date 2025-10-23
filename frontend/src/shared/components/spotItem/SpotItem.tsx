@@ -22,12 +22,14 @@ function SpotItem({
   onClick,
 }: SpotItemProps) {
   return (
-    <div
+    <button
+      type="button"
       css={[
         flex({ justify: 'center', align: 'center', gap: 15 }),
         spotItem.base(),
       ]}
       onClick={onClick}
+      aria-label={`${name} ${isBest ? ' 베스트 장소' : ''}, ${description}, 평균 이동시간 ${avgMinutes}분`}
     >
       <MarkerIndex index={index} type="recommended" />
       <div
@@ -45,7 +47,7 @@ function SpotItem({
         </div>
         <p css={[typography.c1, spotItem.description()]}>{description}</p>
       </div>
-    </div>
+    </button>
   );
 }
 

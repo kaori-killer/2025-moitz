@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import { Link } from 'react-router';
 
 import { SelectedLocation } from '@features/recommendation/types/SelectedLocation';
@@ -21,6 +22,14 @@ interface HeaderProps {
 
 function Header({ selectedLocation, onLocationChange }: HeaderProps) {
   const { showToast } = useToastActionsContext();
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      headerRef.current.focus();
+    }
+  }, [selectedLocation]);
+
   const handleBackButtonClick = () => {
     onLocationChange(null);
   };
@@ -31,17 +40,17 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
   };
 
   return (
-    <div css={[header.base()]}>
+    <div ref={headerRef} css={[header.base()]} tabIndex={-1}>
       <div css={[flex({ justify: 'space-between' }), header.top()]}>
         {!selectedLocation && (
-          <Link to="/">
-            <MapIconButton src={IconBack} alt="back" />
+          <Link aria-label="홈으로 이동" to="/">
+            <MapIconButton src={IconBack} alt="뒤로 가기" />
           </Link>
         )}
         {selectedLocation && (
           <MapIconButton
             src={IconBack}
-            alt="back"
+            alt="뒤로 가기"
             onClick={handleBackButtonClick}
           />
         )}
@@ -54,7 +63,7 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
         />
         <MapIconButton
           src={IconShare}
-          alt="share"
+          alt="공유하기"
           onClick={handleShareButtonClick}
         />
       </div>
