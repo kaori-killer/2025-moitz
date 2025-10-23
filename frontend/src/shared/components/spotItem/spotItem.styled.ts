@@ -9,10 +9,6 @@ export const base = () => css`
   background-color: ${colorToken.gray[8]};
   border-radius: ${borderRadiusToken[10]};
   cursor: pointer;
-
-  &:hover {
-    background-color: ${colorToken.main[4]};
-  }
 `;
 
 export const contents_container = () => css`

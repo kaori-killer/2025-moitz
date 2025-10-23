@@ -5,6 +5,7 @@ import * as conditionCard from './conditionCard.styled';
 interface ConditionCardProps {
   iconText: string;
   contentText: string;
+  descriptionText: string;
   onClick: () => void;
   isSelected?: boolean;
 }
@@ -12,6 +13,7 @@ interface ConditionCardProps {
 function ConditionCard({
   iconText,
   contentText,
+  descriptionText,
   onClick,
   isSelected = false,
 }: ConditionCardProps) {
@@ -25,8 +27,11 @@ function ConditionCard({
       type="button"
       onClick={onClick}
     >
-      <div css={[typography.b1, conditionCard.text()]}>{iconText}</div>
+      <div css={[typography.b1, conditionCard.icon()]}>{iconText}</div>
       <div css={[typography.b1, conditionCard.text()]}>{contentText}</div>
+      <div css={[typography.c2, conditionCard.description()]}>
+        {descriptionText}
+      </div>
     </button>
   );
 }

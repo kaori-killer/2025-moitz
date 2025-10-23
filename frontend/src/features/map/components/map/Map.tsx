@@ -70,7 +70,7 @@ function Map({
   }
 
   // 스크립트가 로드되었을 때만 지도 렌더링
-  return <div ref={mapRef} css={map.container()} />;
+  return <div ref={mapRef} css={map.container()} aria-hidden={true} />;
 }
 
 export default Map;

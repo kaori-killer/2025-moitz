@@ -62,9 +62,11 @@ function BottomSheetDetail({
 
       <DetailSection isHeader={false} title={'추천 장소'} isBestBadge={false}>
         <div css={[flex(), scroll, bottomSheetDetail.placeList()]}>
-          {selectedLocation.places.map((place) => (
-            <PlaceCard key={place.index} place={place} />
-          ))}
+          {Object.keys(selectedLocation.places).map((category) =>
+            selectedLocation.places[category].map((place) => (
+              <PlaceCard key={place.index} place={place} />
+            )),
+          )}
         </div>
       </DetailSection>
     </div>

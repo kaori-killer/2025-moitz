@@ -11,6 +11,7 @@ interface MapIconButtonProps {
 function MapIconButton({ src, alt, onClick }: MapIconButtonProps) {
   return (
     <button
+      aria-label={alt}
       css={[
         flex({ justify: 'center', align: 'center' }),
         shadow.map,

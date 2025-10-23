@@ -50,7 +50,7 @@ export type RecommendedLocationResponse = {
 };
 
 export type LocationResponse = {
-  requirement: LocationRequirement;
+  requirements: LocationRequirement[];
   startingPlaces: StartingPlaceResponse[];
   locations: RecommendedLocationResponse[];
 };
