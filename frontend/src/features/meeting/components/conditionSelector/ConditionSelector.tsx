@@ -23,6 +23,7 @@ function ConditionSelector({
 
   return (
     <InputFormSection
+      iconText={INPUT_FORM_TEXT.CONDITION.ICON}
       titleText={INPUT_FORM_TEXT.CONDITION.TITLE}
       descriptionText={INPUT_FORM_TEXT.CONDITION.DESCRIPTION}
     >
@@ -32,6 +33,7 @@ function ConditionSelector({
             key={condition.ID}
             iconText={condition.ICON}
             contentText={condition.TEXT}
+            descriptionText={condition.DESCRIPTION}
             isSelected={selectedConditionIDs.includes(condition.ID)}
             onClick={() => handleConditionCardClick(condition.ID)}
           />

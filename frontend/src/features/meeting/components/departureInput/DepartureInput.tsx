@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import InputFormSection from '@features/meeting/components/meetingFormSection/MeetingFormSection';
+import MeetingFormSection from '@features/meeting/components/meetingFormSection/MeetingFormSection';
 import { INPUT_FORM_TEXT } from '@features/meeting/constants/inputForm';
 import { STATION_LIST } from '@features/meeting/constants/stationList';
 
@@ -60,7 +60,8 @@ function DepartureInput({
   };
 
   return (
-    <InputFormSection
+    <MeetingFormSection
+      iconText={INPUT_FORM_TEXT.DEPARTURE.ICON}
       titleText={INPUT_FORM_TEXT.DEPARTURE.TITLE}
       descriptionText={INPUT_FORM_TEXT.DEPARTURE.DESCRIPTION}
     >
@@ -88,7 +89,7 @@ function DepartureInput({
           />
         ))}
       </div>
-    </InputFormSection>
+    </MeetingFormSection>
   );
 }
 
