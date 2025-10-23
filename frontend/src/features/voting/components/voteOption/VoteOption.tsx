@@ -23,23 +23,25 @@ function VoteOption({ option, isSelected, onToggle }: VoteOptionProps) {
       ]}
     >
       <input
-        type="checkbox"
+        type="radio"
         id={option.id}
         name="vote-option"
         value={option.id}
         checked={isSelected}
         onChange={() => onToggle(option.id)}
         css={voteOption.checkbox()}
+        aria-label={`${option.name}, ${option.count}명이 투표함`}
       />
       <label
         htmlFor={option.id}
         css={[typography.b2, voteOption.candidateName()]}
+        aria-hidden="true"
       >
         {option.name}
       </label>
 
       <VoteCountIcons count={option.count} />
-      <span css={[typography.c1, voteOption.voteCount()]}>
+      <span css={[typography.c1, voteOption.voteCount()]} aria-hidden="true">
         {option.count}명
       </span>
     </div>
