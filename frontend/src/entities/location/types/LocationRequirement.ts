@@ -47,12 +47,10 @@ export const LOCATION_REQUIREMENT_BASE = {
   ACTIVITY: {
     id: 'ACTIVITY' as const,
     text: '액티비티',
-    description: '클라이밍,볼링,사격,당구',
   },
   ENTERTAINMENT: {
     id: 'ENTERTAINMENT' as const,
     text: '엔터테인먼트',
-    description: '방탈출,만화방,보드게임카페,영화관',
   },
 } as const;
 
