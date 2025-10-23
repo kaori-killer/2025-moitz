@@ -17,8 +17,6 @@ function PlaceCard({ place }: PlaceCardProps) {
     window.open(place.placeUrl, '_blank');
   };
 
-  console.log(imageUrl);
-
   return (
     <button
       css={[flex({ direction: 'column', gap: 10 }), card.base()]}
