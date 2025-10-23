@@ -1,5 +1,7 @@
 import React from 'react';
 
+import useVoteModal from '@widgets/voteModal/hooks/useVoteModal';
+
 import MapVoteButton from '@shared/components/mapVoteButton/MapVoteButton';
 import { flex, scroll, shadow } from '@shared/styles/default.styled';
 
@@ -20,6 +22,12 @@ function BottomSheetView({
   isAnimating,
   onContainerTransitionEnd,
 }: BottomSheetViewProps) {
+  const { openVoteModal } = useVoteModal();
+
+  const handleVoteButtonClick = async () => {
+    await openVoteModal();
+  };
+
   return (
     <div css={[bottomSheetView.base()]}>
       <div
@@ -33,7 +41,11 @@ function BottomSheetView({
         onTransitionEnd={onContainerTransitionEnd}
       >
         <div css={bottomSheetView.voteButtonWrapper()}>
-          <MapVoteButton onClick={() => {}} />
+          <MapVoteButton
+            onClick={() => {
+              handleVoteButtonClick();
+            }}
+          />
         </div>
 
         <div css={[bottomSheetView.header()]} {...handleProps}>

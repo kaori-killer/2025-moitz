@@ -1,33 +1,32 @@
 import { withLayout } from '@sb/decorators/withLayout';
 
-import ConditionSelector from './ConditionSelector';
+import Modal from './Modal';
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta = {
-  component: ConditionSelector,
+  component: Modal,
   decorators: [withLayout],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
-    selectedConditionIDs: {
-      control: { type: 'object' },
-      description: '선택된 조건 ID들',
+    onClose: {
+      description: '모달 닫기 함수',
     },
-    onSelect: {
-      description: '조건 ID 업데이트 시 실행될 함수',
+    children: {
+      description: '모달 내부 컨텐츠 내용',
     },
   },
-} satisfies Meta<typeof ConditionSelector>;
+} satisfies Meta<typeof Modal>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    selectedConditionIDs: [],
-    onSelect: () => {},
+    onClose: () => {},
+    children: '모달 내용이 들어갑니다',
   },
 };

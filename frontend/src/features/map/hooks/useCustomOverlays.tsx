@@ -31,6 +31,14 @@ interface UseCustomOverlaysProps {
   changeSelectedLocation: (loc: RecommendedLocation) => void;
 }
 
+type NaverMapOptions = {
+  center: naver.maps.LatLng;
+  zoom: number;
+  scaleControl?: boolean;
+  logoControl?: boolean;
+  mapDataControl?: boolean;
+};
+
 /* ===========================================
  * useCustomOverlays
  * - 추천지 선택 전: 시작점 + 모든 추천지 마커
