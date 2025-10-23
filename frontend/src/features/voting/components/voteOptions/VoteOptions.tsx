@@ -34,7 +34,14 @@ function VoteOptions() {
         voteOptions.candidateListWrapper(),
       ]}
     >
-      <RefreshButton onRefresh={() => {}} />
+      <div
+        css={[
+          flex({ justify: 'flex-end', align: 'center' }),
+          voteOptions.refreshButtonWrapper(),
+        ]}
+      >
+        <RefreshButton onRefresh={() => {}} />
+      </div>
 
       <form
         css={[
