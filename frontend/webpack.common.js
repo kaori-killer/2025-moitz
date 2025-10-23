@@ -76,6 +76,10 @@ export default function common(envVars = {}) {
                 },
               ]
             : []),
+          {
+            from: 'assets',
+            to: 'assets',
+          },
         ],
       }),
     ],
