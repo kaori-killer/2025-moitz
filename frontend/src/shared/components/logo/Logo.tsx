@@ -11,10 +11,10 @@ interface LogoProps {
 function Logo({ type = 'black' }: LogoProps) {
   return (
     <div css={[flex({ justify: 'center', align: 'center', gap: 5 })]}>
-      <img src={IconLogo} alt="logo-icon" />
+      <img src={IconLogo} alt="" />
       <img
         src={type === 'black' ? IconLogoText : IconLogoTextWhite}
-        alt="logo-text"
+        alt="모잇지"
       />
     </div>
   );
