@@ -11,6 +11,7 @@ export type useVoteStatusReturn = {
   isError: boolean;
   errorMessage: string;
   refetch: () => Promise<void>;
+  updateVoteCount: (locationName: string) => void;
 };
 
 const useVoteStatus = (recommendationId: string): useVoteStatusReturn => {
@@ -41,12 +42,24 @@ const useVoteStatus = (recommendationId: string): useVoteStatusReturn => {
     fetchData();
   }, [fetchData]);
 
+  const updateVoteCount = useCallback((locationName: string) => {
+    setVoteStatus((prevStatus) =>
+      prevStatus.map((item) => {
+        if (item.locationName === locationName) {
+          return { ...item, count: item.count + 1 };
+        }
+        return item;
+      }),
+    );
+  }, []);
+
   return {
     voteStatus,
     isLoading,
     isError,
     errorMessage,
     refetch: fetchData,
+    updateVoteCount,
   };
 };
 

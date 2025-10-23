@@ -7,7 +7,6 @@ import {
 } from '@entities/location/api/types/VoteAPI';
 
 export type useVoteReturn = {
-  voteData: VoteResponse | null;
   isVoting: boolean;
   isError: boolean;
   errorMessage: string;
@@ -19,7 +18,6 @@ export type useVoteReturn = {
 };
 
 const useVote = (): useVoteReturn => {
-  const [voteData, setVoteData] = useState<VoteResponse | null>(null);
   const [isVoting, setIsVoting] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -32,7 +30,6 @@ const useVote = (): useVoteReturn => {
 
       try {
         const response = await fetchVote(recommendationId, requestBody);
-        setVoteData(response);
         return response;
       } catch (error) {
         setIsError(true);
@@ -46,13 +43,11 @@ const useVote = (): useVoteReturn => {
   );
 
   const resetVote = useCallback(() => {
-    setVoteData(null);
     setIsError(false);
     setErrorMessage('');
   }, []);
 
   return {
-    voteData,
     isVoting,
     isError,
     errorMessage,
