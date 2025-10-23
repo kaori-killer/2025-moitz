@@ -107,3 +107,15 @@ export const inline_flex = (options: flexOptions = {}) => css`
   ${options.wrap && `flex-wrap: ${options.wrap};`}
   ${options.gap && `gap: ${options.gap}px;`}
 `;
+
+export const sr_only = css`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`;

@@ -10,12 +10,6 @@ interface refreshButtonProps {
 
 function RefreshButton({ onRefresh }: refreshButtonProps) {
   return (
-    <div
-      css={[
-        flex({ justify: 'flex-end', align: 'center' }),
-        refreshButton.refreshButtonWrapper(),
-      ]}
-    >
       <button
         css={[flex({ align: 'center', gap: 5 }), refreshButton.refreshButton()]}
         type="button"
@@ -30,7 +24,6 @@ function RefreshButton({ onRefresh }: refreshButtonProps) {
         />
         <p aria-hidden="true">새로고침</p>
       </button>
-    </div>
   );
 }
 

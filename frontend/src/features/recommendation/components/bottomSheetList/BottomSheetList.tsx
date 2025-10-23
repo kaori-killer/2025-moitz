@@ -11,21 +11,21 @@ import SpotItemList from '../spotItemList/SpotItemList';
 interface BottomSheetListProps {
   startingPlaces: StartingPlace[];
   recommendedLocations: RecommendedLocation[];
-  conditionID: LocationRequirement;
+  conditionIDs: LocationRequirement[];
   onSpotClick: (spot: RecommendedLocation) => void;
 }
 
 function BottomSheetList({
   startingPlaces,
   recommendedLocations,
-  conditionID,
+  conditionIDs,
   onSpotClick,
 }: BottomSheetListProps) {
   return (
     <>
       <MeetingWrapper
         startingPlaces={startingPlaces}
-        conditionID={conditionID}
+        conditionIDs={conditionIDs}
       />
       <SpotItemList
         recommendedLocations={recommendedLocations}

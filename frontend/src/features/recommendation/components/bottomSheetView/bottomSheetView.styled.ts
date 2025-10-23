@@ -10,6 +10,7 @@ export const base = () => css`
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 100;
 `;
 
 export const container = (positionPercent: number) => css`

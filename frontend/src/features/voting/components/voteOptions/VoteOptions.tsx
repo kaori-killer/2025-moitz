@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import BottomButton from '@shared/components/bottomButton/BottomButton';
 import RefreshButton from '@shared/components/RefreshButton/RefreshButton';
 import { flex } from '@shared/styles/default.styled';
 
@@ -15,7 +16,11 @@ const VOTE_OPTIONS = [
   { id: 'itaewon', name: '이태원역', count: 4 },
 ];
 
-function VoteOptions() {
+interface VoteOptionsProps {
+  onClose: () => void;
+}
+
+function VoteOptions({ onClose }: VoteOptionsProps) {
   const [selectedOption, setSelectedOption] = useState<string>('');
 
   const handleOptionChange = (id: string) => {
@@ -34,7 +39,14 @@ function VoteOptions() {
         voteOptions.candidateListWrapper(),
       ]}
     >
-      <RefreshButton onRefresh={() => {}} />
+      <div
+        css={[
+          flex({ justify: 'flex-end', align: 'center' }),
+          voteOptions.refreshButtonWrapper(),
+        ]}
+      >
+        <RefreshButton onRefresh={() => {}} />
+      </div>
 
       <div className="visually-hidden">
         투표 옵션 목록. 라디오 버튼으로 하나만 선택 가능합니다. 다른 옵션을
@@ -55,6 +67,12 @@ function VoteOptions() {
             onToggle={handleOptionChange}
           />
         ))}
+        <BottomButton
+          text={'투표하기'}
+          onClick={onClose}
+          type="button"
+          active={true}
+        />
       </form>
     </section>
   );
