@@ -1,10 +1,9 @@
 import { Link } from 'react-router';
 
 import { SelectedLocation } from '@features/recommendation/types/SelectedLocation';
-import Toast from '@features/toast/components/Toast';
-import { useToast } from '@features/toast/hooks/useToast';
+import { useToastActionsContext } from '@features/toast/hooks/useToastActionsContext';
 
-import MapButton from '@shared/components/mapButton/MapButton';
+import MapIconButton from '@shared/components/mapIconButton/MapIconButton';
 import MapPoint from '@shared/components/mapPoint/MapPoint';
 import { flex } from '@shared/styles/default.styled';
 
@@ -21,7 +20,7 @@ interface HeaderProps {
 }
 
 function Header({ selectedLocation, onLocationChange }: HeaderProps) {
-  const { isVisible, message, showToast } = useToast();
+  const { showToast } = useToastActionsContext();
   const handleBackButtonClick = () => {
     onLocationChange(null);
   };
@@ -36,11 +35,11 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
       <div css={[flex({ justify: 'space-between' }), header.top()]}>
         {!selectedLocation && (
           <Link to="/">
-            <MapButton src={IconBack} alt="back" />
+            <MapIconButton src={IconBack} alt="back" />
           </Link>
         )}
         {selectedLocation && (
-          <MapButton
+          <MapIconButton
             src={IconBack}
             alt="back"
             onClick={handleBackButtonClick}
@@ -53,13 +52,12 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
               : DEFAULT_CURRENT_RECOMMEND_LOCATION
           }
         />
-        <MapButton
+        <MapIconButton
           src={IconShare}
           alt="share"
           onClick={handleShareButtonClick}
         />
       </div>
-      <Toast message={message} isVisible={isVisible} />
     </div>
   );
 }

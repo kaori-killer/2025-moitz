@@ -2,6 +2,7 @@
 import js from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import prettier from 'eslint-config-prettier';
 import pluginImport from 'eslint-plugin-import';
 import pluginReact from 'eslint-plugin-react';
 import storybook from 'eslint-plugin-storybook';
@@ -61,6 +62,7 @@ export default [
 
       // emotion css prop를 쓰기 위한 규칙
       'react/no-unknown-property': ['error', { ignore: ['css'] }],
+      indent: ['error', 2],
       'import/order': [
         'error',
         {
@@ -162,4 +164,5 @@ export default [
     ignores: ['**/node_modules/**', '**/dist/**', '**/build/**'],
   },
   ...storybook.configs['flat/recommended'],
+  prettier,
 ];
