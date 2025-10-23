@@ -26,8 +26,12 @@ function ConditionCard({
       ]}
       type="button"
       onClick={onClick}
+      aria-pressed={isSelected}
+      aria-label={contentText}
     >
-      <div css={[typography.b1, conditionCard.icon()]}>{iconText}</div>
+      <div css={[typography.b1, conditionCard.icon()]} aria-hidden="true">
+        {iconText}
+      </div>
       <div css={[typography.b1, conditionCard.text()]}>{contentText}</div>
       <div css={[typography.c2, conditionCard.description()]}>
         {descriptionText}
