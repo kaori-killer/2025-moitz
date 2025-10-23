@@ -3,8 +3,8 @@ import { css } from '@emotion/react';
 import { borderRadiusToken, colorToken } from '@shared/styles/tokens';
 
 export const base = () => css`
-  width: 200px;
-  min-width: 165px;
+  width: 170px;
+  min-width: 170px;
   cursor: pointer;
 `;
 
