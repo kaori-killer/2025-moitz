@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import InputFormSection from '@features/meeting/components/meetingFormSection/MeetingFormSection';
+import MeetingFormSection from '@features/meeting/components/meetingFormSection/MeetingFormSection';
 import { INPUT_FORM_TEXT } from '@features/meeting/constants/inputForm';
 import { STATION_LIST } from '@features/meeting/constants/stationList';
 
@@ -60,12 +60,17 @@ function DepartureInput({
   };
 
   return (
-    <InputFormSection
+    <MeetingFormSection
+      iconText={INPUT_FORM_TEXT.DEPARTURE.ICON}
       titleText={INPUT_FORM_TEXT.DEPARTURE.TITLE}
       descriptionText={INPUT_FORM_TEXT.DEPARTURE.DESCRIPTION}
     >
       <div css={input.container()}>
+        <label htmlFor="departure-input" className="visually-hidden">
+          출발지 입력
+        </label>
         <Input
+          id="departure-input"
           placeholder="출발지를 입력해주세요"
           value={inputValue}
           onChange={handleInputValue}
@@ -88,7 +93,7 @@ function DepartureInput({
           />
         ))}
       </div>
-    </InputFormSection>
+    </MeetingFormSection>
   );
 }
 

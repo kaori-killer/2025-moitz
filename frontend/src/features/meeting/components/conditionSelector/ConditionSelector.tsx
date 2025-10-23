@@ -1,18 +1,20 @@
 import { CONDITION_CARD_TEXT } from '@features/meeting/constants/conditionCard';
 import { INPUT_FORM_TEXT } from '@features/meeting/constants/inputForm';
 
+import { LocationRequirement } from '@entities/location/types/LocationRequirement';
+
 import ConditionCard from '../conditionCard/ConditionCard';
 import InputFormSection from '../meetingFormSection/MeetingFormSection';
 
 import * as conditionSelector from './conditionSelector.styled';
 
 interface ConditionSelectorProps {
-  selectedConditionID: string;
+  selectedConditionIDs: LocationRequirement[];
   onSelect: (condition: string) => void;
 }
 
 function ConditionSelector({
-  selectedConditionID,
+  selectedConditionIDs,
   onSelect,
 }: ConditionSelectorProps) {
   const handleConditionCardClick = (condition: string) => {
@@ -21,6 +23,7 @@ function ConditionSelector({
 
   return (
     <InputFormSection
+      iconText={INPUT_FORM_TEXT.CONDITION.ICON}
       titleText={INPUT_FORM_TEXT.CONDITION.TITLE}
       descriptionText={INPUT_FORM_TEXT.CONDITION.DESCRIPTION}
     >
@@ -30,7 +33,8 @@ function ConditionSelector({
             key={condition.ID}
             iconText={condition.ICON}
             contentText={condition.TEXT}
-            isSelected={selectedConditionID === condition.ID}
+            descriptionText={condition.DESCRIPTION}
+            isSelected={selectedConditionIDs.includes(condition.ID)}
             onClick={() => handleConditionCardClick(condition.ID)}
           />
         ))}

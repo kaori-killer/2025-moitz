@@ -43,7 +43,7 @@ export const Default: Story = {
   args: {
     startingLocations: StartingPlacesMock,
     recommendedLocations: RecommendedLocationsMock,
-    conditionID: 'NOT_SELECTED',
+    conditionIDs: ['CAFE'],
     selectedLocation: null,
     handleSpotClick: () => {},
   },
@@ -53,7 +53,7 @@ export const Short: Story = {
   args: {
     startingLocations: StartingPlacesMock,
     recommendedLocations: RecommendedLocationsMock.slice(0, 2),
-    conditionID: 'NOT_SELECTED',
+    conditionIDs: ['CAFE'],
     selectedLocation: null,
     handleSpotClick: () => {},
   },

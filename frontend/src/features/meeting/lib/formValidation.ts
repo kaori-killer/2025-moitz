@@ -1,3 +1,5 @@
+import { LocationRequirement } from '@entities/location/types/LocationRequirement';
+
 import { ValidationError } from '@shared/types/validationError';
 
 import { STATION_LIST } from '../constants/stationList';
@@ -72,7 +74,7 @@ export const validateDuplicateDeparture = (
 
 export const validateForm = (
   departureList: string[],
-  conditionId: string,
+  conditionIds: LocationRequirement[],
 ): ValidationError => {
   const minLengthValidation = validateDepartureListMinLength(
     departureList.length,
@@ -81,7 +83,7 @@ export const validateForm = (
     return minLengthValidation;
   }
 
-  if (!conditionId) {
+  if (conditionIds.length === 0) {
     return {
       isValid: false,
       message: '조건을 선택해주세요',

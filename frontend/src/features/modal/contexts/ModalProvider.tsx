@@ -4,7 +4,7 @@ import { setModalFunctions } from '../utils/modal';
 
 import ModalContext, { ModalItem } from './ModalContext';
 
-export const ModalProvider = ({ children }: { children: ReactNode }) => {
+const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [modals, setModals] = useState<ModalItem[]>([]);
 
   const mount = (id: string, element: ReactNode) => {
@@ -28,3 +28,5 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
     </ModalContext.Provider>
   );
 };
+
+export default ModalProvider;

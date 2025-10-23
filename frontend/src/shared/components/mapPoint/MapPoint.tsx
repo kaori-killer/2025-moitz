@@ -11,6 +11,11 @@ interface MapPointProps {
 function MapPoint({ text }: MapPointProps) {
   return (
     <div
+      role="text"
+      aria-label={`현재 ${text}의 정보를 보고 있습니다.`}
+      aria-live="polite"
+      aria-atomic="true"
+      aria-hidden="true"
       css={[
         inline_flex({ justify: 'center', align: 'center', gap: 10 }),
         shadow.map,

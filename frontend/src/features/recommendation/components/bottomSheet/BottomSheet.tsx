@@ -19,7 +19,7 @@ interface BottomSheetProps {
   startingLocations: StartingPlace[];
   recommendedLocations: RecommendedLocation[];
   selectedLocation: SelectedLocation;
-  conditionID: LocationRequirement;
+  conditionIDs: LocationRequirement[];
   handleSpotClick: (spot: RecommendedLocation) => void;
 }
 
@@ -27,7 +27,7 @@ function BottomSheet({
   startingLocations,
   recommendedLocations,
   selectedLocation,
-  conditionID,
+  conditionIDs,
   handleSpotClick,
 }: BottomSheetProps) {
   const [positionPercent, setPositionPercent] = useState(60);
@@ -144,7 +144,7 @@ function BottomSheet({
         <BottomSheetList
           startingPlaces={startingLocations}
           recommendedLocations={recommendedLocations}
-          conditionID={conditionID}
+          conditionIDs={conditionIDs}
           onSpotClick={handleSpotClick}
         />
       )}

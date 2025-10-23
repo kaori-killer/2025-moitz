@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 import { useFormInfo } from '@features/meeting/hooks/useFormInfo';
-import Toast from '@features/toast/components/Toast';
-import { useToast } from '@features/toast/hooks/useToast';
+import { useToastActionsContext } from '@features/toast/hooks/useToastActionsContext';
 
 import { useLocationsContext } from '@entities/location/contexts/useLocationsContext';
 import { setMeetingStorage } from '@entities/location/model/meetingStorage';
@@ -21,19 +20,19 @@ function MeetingForm() {
 
   const {
     departureList,
-    conditionID,
+    conditionIDs,
     addDepartureWithValidation,
     removeDepartureAtIndex,
     updateConditionID,
     validateFormSubmit,
   } = useFormInfo();
-  const { isVisible, message, showToast } = useToast();
+  const { showToast } = useToastActionsContext();
 
   const { getRecommendationFull } = useLocationsContext();
 
   const isValid = React.useMemo(
     () => validateFormSubmit().isValid,
-    [departureList, conditionID],
+    [departureList, conditionIDs],
   );
 
   const showValidationError = (error: ValidationError) => {
@@ -62,7 +61,7 @@ function MeetingForm() {
     try {
       const { id } = await getRecommendationFull({
         startingPlaceNames: departureList,
-        requirement: conditionID,
+        requirements: conditionIDs,
       });
 
       if (id) navigate(`/result/${id}`);
@@ -70,7 +69,7 @@ function MeetingForm() {
       showToast('모임 지역 찾기에 실패했습니다.');
     }
 
-    setMeetingStorage({ departureList, conditionID });
+    setMeetingStorage({ departureList, conditionIDs });
   };
 
   return (
@@ -83,13 +82,12 @@ function MeetingForm() {
         />
 
         <ConditionSelector
-          selectedConditionID={conditionID}
+          selectedConditionIDs={conditionIDs}
           onSelect={updateConditionID}
         />
       </div>
 
       <MeetingFormBottomButton active={isValid} />
-      <Toast message={message} isVisible={isVisible} />
     </form>
   );
 }
