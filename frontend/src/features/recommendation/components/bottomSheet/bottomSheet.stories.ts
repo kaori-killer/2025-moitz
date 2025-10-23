@@ -2,6 +2,7 @@ import {
   StartingPlacesMock,
   RecommendedLocationsMock,
 } from '@mocks/LocationsMock';
+import { LocationsMock } from '@mocks/LocationsMock';
 
 import { withLayout } from '@sb/decorators/withLayout';
 
@@ -55,6 +56,16 @@ export const Short: Story = {
     recommendedLocations: RecommendedLocationsMock.slice(0, 2),
     conditionIDs: ['CAFE'],
     selectedLocation: null,
+    handleSpotClick: () => {},
+  },
+};
+
+export const Detail: Story = {
+  args: {
+    startingLocations: StartingPlacesMock,
+    recommendedLocations: RecommendedLocationsMock.slice(0, 2),
+    conditionIDs: ['CAFE'],
+    selectedLocation: LocationsMock.locations[0],
     handleSpotClick: () => {},
   },
 };
