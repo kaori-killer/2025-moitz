@@ -19,6 +19,7 @@ function PlaceCard({ place }: PlaceCardProps) {
 
   return (
     <button
+      type="button"
       css={[flex({ direction: 'column', gap: 10 }), card.base()]}
       onClick={handleClick}
       aria-label={`${place.name} 장소 정보 더보기`}
