@@ -6,8 +6,6 @@ import { flex } from '@shared/styles/default.styled';
 
 import VoteHeader from '../voteHeader/VoteHeader';
 
-import * as voteModal from './voteModal.styled';
-
 interface VoteModalProps {
   onClose: () => void;
 }
@@ -29,14 +27,12 @@ function VoteModal({ onClose }: VoteModalProps) {
           subDescription="링크를 받은 사람들과 투표할 수 있어요"
         />
         <VoteOptions />
-        <footer css={voteModal.footer()}>
-          <BottomButton
-            text={'투표하기'}
-            onClick={onClose}
-            type="button"
-            active={true}
-          />
-        </footer>
+        <BottomButton
+          text={'투표하기'}
+          onClick={onClose}
+          type="button"
+          active={true}
+        />
       </main>
     </Modal>
   );
