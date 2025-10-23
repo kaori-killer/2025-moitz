@@ -4,14 +4,13 @@ import { flex, typography } from '@shared/styles/default.styled';
 
 import IconToast from '@icons/icon-toast.svg';
 
+import { useToastStateContext } from '../hooks/useToastStateContext';
+
 import * as toast from './toast.styled';
 
-interface ToastProps {
-  message: string;
-  isVisible: boolean;
-}
+function Toast() {
+  const { isVisible, message } = useToastStateContext();
 
-function Toast({ message, isVisible }: ToastProps) {
   if (!isVisible) return null;
 
   return createPortal(

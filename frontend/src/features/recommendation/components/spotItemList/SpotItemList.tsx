@@ -13,22 +13,23 @@ function SpotItemList({
   onSpotClick,
 }: SpotItemListProps) {
   return (
-    <div css={[flex({ direction: 'column', gap: 20 })]}>
+    <ul role="list" css={[flex({ direction: 'column', gap: 20 })]}>
       {recommendedLocations.map((location) => {
         const { index, name, description, avgMinutes, isBest } = location;
         return (
-          <SpotItem
-            key={index}
-            index={index}
-            name={name}
-            description={description}
-            avgMinutes={avgMinutes}
-            isBest={isBest}
-            onClick={() => onSpotClick(location)}
-          />
+          <li key={index} role="listitem">
+            <SpotItem
+              index={index}
+              name={name}
+              description={description}
+              avgMinutes={avgMinutes}
+              isBest={isBest}
+              onClick={() => onSpotClick(location)}
+            />
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }
 

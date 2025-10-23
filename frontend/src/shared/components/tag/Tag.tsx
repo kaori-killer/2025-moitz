@@ -1,6 +1,6 @@
 import { flex, inline_flex, typography } from '@shared/styles/default.styled';
 
-import IconCancel from '@icons/icon-cancel.svg';
+import IconCancel from '@icons/icon-cancel-blue.svg';
 
 import * as tag from './tag.styled';
 

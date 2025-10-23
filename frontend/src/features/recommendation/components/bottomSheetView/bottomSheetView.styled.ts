@@ -3,13 +3,14 @@ import { css } from '@emotion/react';
 import { colorToken, borderRadiusToken } from '@shared/styles/tokens';
 
 const MIN_VH = 12; // 최소 높이
-const MAX_VH = 90; // 최대 높이
+const MAX_VH = 82; // 최대 높이
 
 export const base = () => css`
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 100;
 `;
 
 export const container = (positionPercent: number) => css`
@@ -23,10 +24,18 @@ export const container = (positionPercent: number) => css`
   min-height: ${MIN_VH}dvh;
   max-height: ${MAX_VH}dvh;
 
+  position: relative;
   padding: 0px 20px;
   background-color: ${colorToken.gray[8]};
   border-top-left-radius: ${borderRadiusToken[10]};
   border-top-right-radius: ${borderRadiusToken[10]};
+`;
+
+export const voteButtonWrapper = () => css`
+  position: absolute;
+  top: -50px;
+  right: -20px;
+  transform: translateX(-50%);
 `;
 
 export const header = () => css`
