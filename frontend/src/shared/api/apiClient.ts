@@ -2,7 +2,7 @@ import { getApiBaseUrl } from '@config/env';
 
 const BASE_URL = getApiBaseUrl();
 
-export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export type RequestConfig = {
   endpoint: string;
@@ -86,6 +86,12 @@ export const apiClient = {
     body?: unknown,
     config?: Omit<RequestConfig, 'method' | 'endpoint' | 'body'>,
   ) => createApiRequest<T>({ ...config, endpoint, method: 'PUT', body }),
+
+  patch: <T>(
+    endpoint: string,
+    body?: unknown,
+    config?: Omit<RequestConfig, 'method' | 'endpoint' | 'body'>,
+  ) => createApiRequest<T>({ ...config, endpoint, method: 'PATCH', body }),
 
   delete: <T>(
     endpoint: string,
