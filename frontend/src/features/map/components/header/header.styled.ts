@@ -6,6 +6,10 @@ export const base = () => css`
   top: 20px;
   padding: 0px 20px;
   z-index: 10;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const top = () => css`
