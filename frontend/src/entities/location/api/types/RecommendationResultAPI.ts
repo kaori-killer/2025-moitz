@@ -31,11 +31,18 @@ export type RecommendedPathResponse = {
   travelTime: number;
 };
 
+export type CoursePointResponse = {
+  index: number;
+  x: number;
+  y: number;
+};
+
 export type RecommendedRouteResponse = {
   startingPlaceId: number;
   transferCount: number;
   totalTravelTime: number;
   paths: RecommendedPathResponse[];
+  course?: CoursePointResponse[];
 };
 
 export type RecommendedLocationResponse = {

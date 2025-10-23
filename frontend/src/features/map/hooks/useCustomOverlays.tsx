@@ -146,7 +146,7 @@ export const useCustomOverlays = ({
 
   /* ===========================================
    * 폴리라인 렌더링
-   * - 선택된 추천지 → 각 출발지로 직선 연결
+   * - 선택된 추천지 → 각 출발지로 course 데이터를 이용한 실제 경로 그리기
    * =========================================== */
   useEffect(() => {
     const { naver } = window;
@@ -157,30 +157,53 @@ export const useCustomOverlays = ({
     polylineInstancesRef.current.forEach((pl) => pl.setMap(null));
     polylineInstancesRef.current = [];
 
-    if (!selectedLocation) return;
+    if (!selectedLocation || !selectedLocation.routes) return;
 
-    const selected = new naver.maps.LatLng(
-      selectedLocation.y,
-      selectedLocation.x,
-    );
+    // 각 출발지별로 경로 그리기
+    selectedLocation.routes.forEach((route) => {
+      const startingPlace = startingLocations.find(
+        (place) => place.id === route.startingPlaceId,
+      );
 
-    startingLocations.forEach((start) => {
-      // 동일 좌표면 스킵
-      if (start.x === selectedLocation.x && start.y === selectedLocation.y)
-        return;
+      if (!startingPlace) return;
 
-      const path = [selected, new naver.maps.LatLng(start.y, start.x)];
+      // course 데이터가 있으면 course를 이용한 경로 그리기
+      if (route.course && route.course.length > 0) {
+        const coursePath = route.course.map(
+          (point) => new naver.maps.LatLng(point.y, point.x),
+        );
 
-      const polyline = new naver.maps.Polyline({
-        map,
-        path,
-        strokeWeight: 4,
-        strokeOpacity: 0.95,
-        strokeColor: '#2563EB',
-        zIndex: 1,
-      });
+        const polyline = new naver.maps.Polyline({
+          map,
+          path: coursePath,
+          strokeWeight: 4,
+          strokeOpacity: 0.95,
+          strokeColor: '#2563EB',
+          zIndex: 1,
+        });
 
-      polylineInstancesRef.current.push(polyline);
+        polylineInstancesRef.current.push(polyline);
+      } else {
+        // course 데이터가 없으면 직선 연결
+        const selected = new naver.maps.LatLng(
+          selectedLocation.y,
+          selectedLocation.x,
+        );
+        const start = new naver.maps.LatLng(startingPlace.y, startingPlace.x);
+
+        const path = [selected, start];
+
+        const polyline = new naver.maps.Polyline({
+          map,
+          path,
+          strokeWeight: 4,
+          strokeOpacity: 0.95,
+          strokeColor: '#2563EB',
+          zIndex: 1,
+        });
+
+        polylineInstancesRef.current.push(polyline);
+      }
     });
 
     return () => {
