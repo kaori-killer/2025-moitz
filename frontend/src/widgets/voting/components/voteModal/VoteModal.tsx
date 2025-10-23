@@ -1,6 +1,8 @@
 import Modal from '@features/modal/components/Modal';
 import VoteOptions from '@features/voting/components/voteOptions/VoteOptions';
 
+import useVoteStatus from '@entities/location/hooks/useVoteStatus';
+
 import BottomButton from '@shared/components/bottomButton/BottomButton';
 import { flex } from '@shared/styles/default.styled';
 
@@ -15,17 +17,19 @@ interface VoteModalProps {
 }
 
 function VoteModal({ onClose, recommendationId }: VoteModalProps) {
+  const { selectedLocationName, setSelectedLocationName, handleVote, isError } =
+    useVoteForm();
   const {
-    selectedLocationName,
-    setSelectedLocationName,
-    handleVote,
-    isVoting,
-    isError,
-  } = useVoteForm(recommendationId);
+    voteStatus,
+    isLoading,
+    isError: statusError,
+    refetch,
+    updateVoteCount,
+  } = useVoteStatus(recommendationId);
 
-  if (isVoting) {
-    return <div>투표 중...</div>;
-  }
+  const handleVoteClick = async () => {
+    await handleVote(recommendationId, updateVoteCount);
+  };
 
   if (isError) {
     return <div>투표 실패</div>;
@@ -47,13 +51,17 @@ function VoteModal({ onClose, recommendationId }: VoteModalProps) {
           subDescription="링크를 받은 사람들과 투표할 수 있어요"
         />
         <VoteOptions
-          recommendationId={recommendationId}
+          selectedLocationName={selectedLocationName}
           onSelectionChange={setSelectedLocationName}
+          voteStatus={voteStatus}
+          isLoading={isLoading}
+          isError={statusError}
+          refetch={refetch}
         />
         <footer css={voteModal.footer()}>
           <BottomButton
             text={'투표하기'}
-            onClick={handleVote}
+            onClick={handleVoteClick}
             type="button"
             active={!!selectedLocationName}
           />

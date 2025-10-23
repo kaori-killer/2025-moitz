@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-import useVoteStatus from '@entities/location/hooks/useVoteStatus';
+import { VoteStatusResponse } from '@entities/location/api/fetchVoteStatus';
 
 import RefreshButton from '@shared/components/RefreshButton/RefreshButton';
 import { flex } from '@shared/styles/default.styled';
@@ -10,30 +8,22 @@ import VoteOption from '../voteOption/VoteOption';
 import * as voteOptions from './voteOptions.styled';
 
 interface VoteOptionsProps {
-  recommendationId: string;
+  selectedLocationName: string;
   onSelectionChange?: (selectedOption: string) => void;
+  voteStatus: VoteStatusResponse[];
+  isLoading: boolean;
+  isError: boolean;
+  refetch: () => Promise<void>;
 }
 
 function VoteOptions({
-  recommendationId,
+  selectedLocationName,
   onSelectionChange,
+  voteStatus,
+  isLoading,
+  isError,
+  refetch,
 }: VoteOptionsProps) {
-  const [selectedOption, setSelectedOption] = useState<string>('');
-  const { voteStatus, isLoading, isError, refetch } =
-    useVoteStatus(recommendationId);
-
-  const handleOptionChange = (id: string) => {
-    setSelectedOption((optionId) => {
-      const newSelection = optionId === id ? '' : id;
-      onSelectionChange?.(newSelection);
-      return newSelection;
-    });
-  };
-
-  const handleRefresh = () => {
-    refetch();
-  };
-
   return (
     <section
       css={[
@@ -41,11 +31,39 @@ function VoteOptions({
         voteOptions.candidateListWrapper(),
       ]}
     >
-      <RefreshButton onRefresh={handleRefresh} />
+      <RefreshButton onRefresh={refetch} />
 
-      {isLoading && <div>투표 현황을 불러오는 중...</div>}
+      {isLoading && (
+        <div
+          css={[
+            flex({
+              direction: 'column',
+              align: 'center',
+              justify: 'center',
+              gap: 5,
+            }),
+            voteOptions.loadingContainer(),
+          ]}
+        >
+          <div>투표 현황을 불러오는 중...</div>
+        </div>
+      )}
 
-      {isError && <div>투표 현황을 불러올 수 없습니다.</div>}
+      {isError && (
+        <div
+          css={[
+            flex({
+              direction: 'column',
+              align: 'center',
+              justify: 'center',
+              gap: 5,
+            }),
+            voteOptions.errorContainer(),
+          ]}
+        >
+          <div>투표 현황을 불러올 수 없습니다.</div>
+        </div>
+      )}
 
       {!isLoading && !isError && (
         <form
@@ -62,8 +80,8 @@ function VoteOptions({
                 name: option.locationName,
                 count: option.count,
               }}
-              isSelected={selectedOption === option.locationName}
-              onToggle={handleOptionChange}
+              isSelected={selectedLocationName === option.locationName}
+              onToggle={(id) => onSelectionChange?.(id)}
             />
           ))}
         </form>
