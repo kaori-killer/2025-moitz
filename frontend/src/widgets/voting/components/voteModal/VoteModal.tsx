@@ -13,6 +13,8 @@ function VoteModal({ onClose }: VoteModalProps) {
   return (
     <Modal onClose={onClose}>
       <main
+        role="dialog"
+        aria-modal="true"
         css={flex({
           direction: 'column',
           justify: 'center',

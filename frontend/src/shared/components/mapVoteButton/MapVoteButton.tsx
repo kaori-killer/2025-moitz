@@ -20,7 +20,7 @@ function MapVoteButton({ onClick }: MapVoteButtonProps) {
       ]}
       onClick={onClick}
     >
-      <img src={IconVote} alt="투표 아이콘" />
+      <img src={IconVote} alt="" aria-hidden="true" />
       <span css={typography.sh2}>투표하기</span>
     </button>
   );

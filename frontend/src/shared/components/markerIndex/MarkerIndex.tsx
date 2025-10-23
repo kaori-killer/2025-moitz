@@ -50,7 +50,7 @@ function MarkerIndex({
         {isRecommended ? (
           <span css={[typography.h3, marker.circle_font()]}>{index}</span>
         ) : (
-          <img src={IconUser} alt="icon-marker-user" draggable={false} />
+          <img src={IconUser} draggable={false} />
         )}
       </div>
       {label && (
