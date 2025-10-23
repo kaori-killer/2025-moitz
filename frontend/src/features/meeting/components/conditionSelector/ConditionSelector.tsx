@@ -1,13 +1,15 @@
 import { CONDITION_CARD_TEXT } from '@features/meeting/constants/conditionCard';
 import { INPUT_FORM_TEXT } from '@features/meeting/constants/inputForm';
 
+import { LocationRequirement } from '@entities/location/types/LocationRequirement';
+
 import ConditionCard from '../conditionCard/ConditionCard';
 import InputFormSection from '../meetingFormSection/MeetingFormSection';
 
 import * as conditionSelector from './conditionSelector.styled';
 
 interface ConditionSelectorProps {
-  selectedConditionIDs: string[];
+  selectedConditionIDs: LocationRequirement[];
   onSelect: (condition: string) => void;
 }
 
