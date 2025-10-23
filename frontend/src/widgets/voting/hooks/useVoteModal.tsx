@@ -3,7 +3,7 @@ import { modal } from '@features/modal/utils/modal';
 import VoteModal from '../components/voteModal/VoteModal';
 
 const useVoteModal = () => {
-  const openVoteModal = () => {
+  const openVoteModal = (recommendationId: string) => {
     return new Promise<void>((resolve) => {
       modal.open(({ unmount }) => {
         return (
@@ -12,6 +12,7 @@ const useVoteModal = () => {
               resolve();
               unmount();
             }}
+            recommendationId={recommendationId}
           />
         );
       });
@@ -24,5 +25,3 @@ const useVoteModal = () => {
 };
 
 export default useVoteModal;
-
-

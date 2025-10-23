@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import useVoteStatus from '@entities/location/hooks/useVoteStatus';
+
 import RefreshButton from '@shared/components/RefreshButton/RefreshButton';
 import { flex } from '@shared/styles/default.styled';
 
@@ -7,24 +9,29 @@ import VoteOption from '../voteOption/VoteOption';
 
 import * as voteOptions from './voteOptions.styled';
 
-const VOTE_OPTIONS = [
-  { id: 'gangnam', name: '강남역', count: 5 },
-  { id: 'hongdae', name: '홍대입구역', count: 3 },
-  { id: 'jamsil', name: '잠실역', count: 2 },
-  { id: 'myeongdong', name: '명동역', count: 1 },
-  { id: 'itaewon', name: '이태원역', count: 4 },
-];
+interface VoteOptionsProps {
+  recommendationId: string;
+  onSelectionChange?: (selectedOption: string) => void;
+}
 
-function VoteOptions() {
+function VoteOptions({
+  recommendationId,
+  onSelectionChange,
+}: VoteOptionsProps) {
   const [selectedOption, setSelectedOption] = useState<string>('');
+  const { voteStatus, isLoading, isError, refetch } =
+    useVoteStatus(recommendationId);
 
   const handleOptionChange = (id: string) => {
     setSelectedOption((optionId) => {
-      if (optionId === id) {
-        return '';
-      }
-      return id;
+      const newSelection = optionId === id ? '' : id;
+      onSelectionChange?.(newSelection);
+      return newSelection;
     });
+  };
+
+  const handleRefresh = () => {
+    refetch();
   };
 
   return (
@@ -34,23 +41,33 @@ function VoteOptions() {
         voteOptions.candidateListWrapper(),
       ]}
     >
-      <RefreshButton onRefresh={() => {}} />
+      <RefreshButton onRefresh={handleRefresh} />
 
-      <form
-        css={[
-          flex({ direction: 'column', align: 'center', gap: 5 }),
-          voteOptions.candidateList(),
-        ]}
-      >
-        {VOTE_OPTIONS.map((option) => (
-          <VoteOption
-            key={option.id}
-            option={option}
-            isSelected={selectedOption === option.id}
-            onToggle={handleOptionChange}
-          />
-        ))}
-      </form>
+      {isLoading && <div>투표 현황을 불러오는 중...</div>}
+
+      {isError && <div>투표 현황을 불러올 수 없습니다.</div>}
+
+      {!isLoading && !isError && (
+        <form
+          css={[
+            flex({ direction: 'column', align: 'center', gap: 5 }),
+            voteOptions.candidateList(),
+          ]}
+        >
+          {voteStatus.map((option, index) => (
+            <VoteOption
+              key={`${option.locationName}-${index}`}
+              option={{
+                id: option.locationName,
+                name: option.locationName,
+                count: option.count,
+              }}
+              isSelected={selectedOption === option.locationName}
+              onToggle={handleOptionChange}
+            />
+          ))}
+        </form>
+      )}
     </section>
   );
 }
