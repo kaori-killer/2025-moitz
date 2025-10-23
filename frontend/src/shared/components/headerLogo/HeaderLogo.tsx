@@ -14,9 +14,9 @@ function HeaderLogo() {
       })}
     >
       <Logo />
-      <span css={[typography.c1, headerLogo.tagline()]}>
+      <p css={[typography.c1, headerLogo.tagline()]}>
         친구들과 모임, 만날 지역을 빠르게!
-      </span>
+      </p>
     </div>
   );
 }

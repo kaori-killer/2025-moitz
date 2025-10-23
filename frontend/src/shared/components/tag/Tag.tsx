@@ -22,8 +22,9 @@ function Tag({ text, onClick }: TagProps) {
         css={[flex({ justify: 'center', align: 'center' }), tag.button()]}
         onClick={onClick}
         type="button"
+        aria-label={`${text} 출발지 삭제`}
       >
-        <img src={IconCancel} alt="취소 버튼"></img>
+        <img src={IconCancel} alt="" />
       </button>
     </div>
   );
