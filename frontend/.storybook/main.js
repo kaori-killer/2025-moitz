@@ -11,10 +11,26 @@ module.exports = {
    * 이렇게 지정하면 title을 생략해도, 폴더 구조 기반으로 title이 자동 생성됨
    */
   stories: [
-    { directory: '../src/features', titlePrefix: 'features', files: '**/*.stories.@(ts|tsx)'},
-    { directory: '../src/entities', titlePrefix: 'entities', files: '**/*.stories.@(ts|tsx)' },
-    { directory: '../src/widgets', titlePrefix: 'widgets', files: '**/*.stories.@(ts|tsx)' },
-    { directory: '../src/shared', titlePrefix: 'shared', files: '**/*.stories.@(ts|tsx)' },
+    {
+      directory: '../src/features',
+      titlePrefix: 'features',
+      files: '**/*.stories.@(ts|tsx)',
+    },
+    {
+      directory: '../src/entities',
+      titlePrefix: 'entities',
+      files: '**/*.stories.@(ts|tsx)',
+    },
+    {
+      directory: '../src/widgets',
+      titlePrefix: 'widgets',
+      files: '**/*.stories.@(ts|tsx)',
+    },
+    {
+      directory: '../src/shared',
+      titlePrefix: 'shared',
+      files: '**/*.stories.@(ts|tsx)',
+    },
   ],
 
   addons: [
@@ -64,10 +80,14 @@ module.exports = {
         '@features': path.resolve(__dirname, '../src/features'),
         '@entities': path.resolve(__dirname, '../src/entities'),
         '@shared': path.resolve(__dirname, '../src/shared'),
-        '@shared/components': path.resolve(__dirname, '../src/shared/components'),
+        '@shared/components': path.resolve(
+          __dirname,
+          '../src/shared/components',
+        ),
         '@shared/styles': path.resolve(__dirname, '../src/shared/styles'),
         '@shared/types': path.resolve(__dirname, '../src/shared/types'),
         '@icons': path.resolve(__dirname, '../assets/icon'),
+        '@image': path.resolve(__dirname, '../assets/image'),
         '@mocks': path.resolve(__dirname, '../src/mocks'),
         '@config': path.resolve(__dirname, '../src/config'),
         '@sb': path.resolve(__dirname, './'),

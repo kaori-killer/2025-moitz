@@ -127,6 +127,11 @@ export default [
               group: 'internal',
               position: 'before',
             },
+            {
+              pattern: '@image/**',
+              group: 'internal',
+              position: 'before',
+            },
             // 7. mocks
             {
               pattern: '@mocks/**',

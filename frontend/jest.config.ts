@@ -25,6 +25,7 @@ const config: Config = {
     '^@shared/styles/(.*)$': '<rootDir>/src/shared/styles/$1',
     '^@shared/types/(.*)$': '<rootDir>/src/shared/types/$1',
     '^@icons/(.*)$': '<rootDir>/src/mocks/fileMock.js',
+    '^@image/(.*)$': '<rootDir>/src/mocks/fileMock.js',
     '^@mocks/(.*)$': '<rootDir>/src/mocks/$1',
     '^@config/(.*)$': '<rootDir>/src/config/$1',
     '^@sb/(.*)$': '<rootDir>/.storybook/$1',

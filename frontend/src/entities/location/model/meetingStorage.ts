@@ -1,18 +1,10 @@
-import { LocationRequirement } from '@entities/location/types/LocationRequirement';
+import {
+  isValidLocationRequirement,
+  LocationRequirement,
+} from '@entities/location/types/LocationRequirement';
 
 const MEETING_DEPARTURE_LIST = 'meeting:departures';
 const MEETING_CONDITION_ID = 'meeting:conditionId';
-
-const VALID_LOCATION_REQUIREMENTS: LocationRequirement[] = [
-  'CAFE',
-  'RESTAURANT',
-  'BAR',
-  'STUDY_CAFE',
-  'SPACE_RENTAL',
-  'PC_ROOM_KARAOKE',
-  'ACTIVITY',
-  'ENTERTAINMENT',
-];
 
 export function setMeetingStorage(params: {
   departureList: string[];
@@ -69,13 +61,4 @@ function getValidConditionIDs(): LocationRequirement[] {
   } catch {
     return [];
   }
-}
-
-function isValidLocationRequirement(
-  item: unknown,
-): item is LocationRequirement {
-  return (
-    typeof item === 'string' &&
-    VALID_LOCATION_REQUIREMENTS.includes(item as LocationRequirement)
-  );
 }
