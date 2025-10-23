@@ -1,4 +1,4 @@
-import { usePagination } from '@features/recommendation/hooks/usePagenation';
+import { usePagination } from '@features/recommendation/hooks/usePagination';
 
 import { RecommendedPlace } from '@entities/location/types/Location';
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
