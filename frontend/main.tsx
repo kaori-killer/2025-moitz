@@ -7,6 +7,9 @@ import App from '@app/App';
 
 import FallBackPage from '@pages/fallBackPage/FallBackPage';
 
+import ModalProvider from '@features/modal/contexts/ModalProvider';
+import ToastProvider from '@features/toast/contexts/ToastProvider';
+
 import { LocationsProvider } from '@entities/location/contexts/LocationsProvider';
 
 import Layout from '@shared/components/layout/Layout';
@@ -37,11 +40,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
       <GlobalStyle />
       <LocationsProvider>
-        <BrowserRouter>
-          <Layout>
-            <App />
-          </Layout>
-        </BrowserRouter>
+        <ToastProvider>
+          <ModalProvider>
+            <BrowserRouter>
+              <Layout>
+                <App />
+              </Layout>
+            </BrowserRouter>
+          </ModalProvider>
+        </ToastProvider>
       </LocationsProvider>
     </React.StrictMode>
   </ErrorBoundary>,

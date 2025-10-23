@@ -36,7 +36,7 @@ function IndexPage() {
   }
 
   return (
-    <div
+    <main
       css={[
         flex({ direction: 'column' }),
         grid_padding,
@@ -44,11 +44,11 @@ function IndexPage() {
         indexPage.base(),
       ]}
     >
-      <div css={indexPage.headerLogo()}>
+      <header css={indexPage.headerLogo()}>
         <HeaderLogo />
-      </div>
+      </header>
       <MeetingForm />
-    </div>
+    </main>
   );
 }
 

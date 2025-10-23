@@ -14,8 +14,16 @@ export const base = () => css`
   }
 `;
 
+export const icon = () => css`
+  font-family: 'Tossface';
+`;
+
 export const text = () => css`
   color: ${colorToken.gray[2]};
+`;
+
+export const description = () => css`
+  color: ${colorToken.gray[5]};
 `;
 
 export const selected = () => css`

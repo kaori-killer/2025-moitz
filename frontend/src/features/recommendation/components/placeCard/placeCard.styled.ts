@@ -2,42 +2,33 @@ import { css } from '@emotion/react';
 
 import { borderRadiusToken, colorToken } from '@shared/styles/tokens';
 
-export const container = () => css`
-  width: 200px;
-  min-width: 200px;
-  background-color: ${colorToken.bg[2]};
-  border-radius: ${borderRadiusToken[10]};
-  margin-right: 20px;
-
-  &:last-child {
-    margin-right: 0;
-  }
+export const base = () => css`
+  width: 170px;
+  cursor: pointer;
 `;
 
 export const image = () => css`
-  position: relative;
   width: 100%;
-  height: 60px;
-  background: linear-gradient(90deg, #1dcfc1 0%, #ff9e42 100%);
-  border-top-left-radius: ${borderRadiusToken[10]};
-  border-top-right-radius: ${borderRadiusToken[10]};
-`;
-
-export const badge = () => css`
-  position: absolute;
-  top: 5px;
-  right: 10px;
+  height: 120px;
+  background-color: ${colorToken.gray[7]};
+  border-radius: ${borderRadiusToken[10]};
+  object-fit: cover;
 `;
 
 export const content = () => css`
   width: 100%;
-  height: 80px;
-  padding: 10px;
-  background-color: ${colorToken.bg[2]};
-  border-bottom-left-radius: ${borderRadiusToken[10]};
-  border-bottom-right-radius: ${borderRadiusToken[10]};
+  padding: 0 5px;
 `;
 
-export const text = () => css`
+export const name = () => css`
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: ${colorToken.gray[1]};
+`;
+
+export const walkingTime = () => css`
+  text-align: left;
+  color: ${colorToken.gray[3]};
 `;

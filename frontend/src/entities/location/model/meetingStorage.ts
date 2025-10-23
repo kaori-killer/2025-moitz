@@ -1,11 +1,14 @@
-import { LocationRequirement } from '@entities/location/types/LocationRequirement';
+import {
+  isValidLocationRequirement,
+  LocationRequirement,
+} from '@entities/location/types/LocationRequirement';
 
 const MEETING_DEPARTURE_LIST = 'meeting:departures';
 const MEETING_CONDITION_ID = 'meeting:conditionId';
 
 export function setMeetingStorage(params: {
   departureList: string[];
-  conditionID: LocationRequirement;
+  conditionIDs: LocationRequirement[];
 }) {
   localStorage.setItem(
     MEETING_DEPARTURE_LIST,
@@ -13,20 +16,49 @@ export function setMeetingStorage(params: {
   );
   localStorage.setItem(
     MEETING_CONDITION_ID,
-    JSON.stringify(params.conditionID),
+    JSON.stringify(params.conditionIDs),
   );
 }
 
 export function getMeetingStorage(): {
   departureList: string[];
-  conditionID: LocationRequirement;
-  } {
-  const departureList = JSON.parse(
-    localStorage.getItem(MEETING_DEPARTURE_LIST) ?? '[]',
-  );
-  const conditionID = JSON.parse(
-    localStorage.getItem(MEETING_CONDITION_ID) ?? 'null',
-  );
+  conditionIDs: LocationRequirement[];
+} {
+  const departureList = getValidDepartureList();
+  const conditionIDs = getValidConditionIDs();
 
-  return { departureList, conditionID };
+  return { departureList, conditionIDs };
+}
+
+function getValidDepartureList(): string[] {
+  try {
+    const stored = localStorage.getItem(MEETING_DEPARTURE_LIST);
+    if (!stored) return [];
+
+    const parsed = JSON.parse(stored);
+    if (
+      Array.isArray(parsed) &&
+      parsed.every((item) => typeof item === 'string')
+    ) {
+      return parsed;
+    }
+    return [];
+  } catch {
+    return [];
+  }
+}
+
+function getValidConditionIDs(): LocationRequirement[] {
+  try {
+    const stored = localStorage.getItem(MEETING_CONDITION_ID);
+    if (!stored) return [];
+
+    const parsed = JSON.parse(stored);
+    if (Array.isArray(parsed) && parsed.every(isValidLocationRequirement)) {
+      return parsed;
+    }
+    return [];
+  } catch {
+    return [];
+  }
 }

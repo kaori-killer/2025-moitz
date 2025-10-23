@@ -6,6 +6,10 @@ export const header = () => css`
   padding-left: 10px;
 `;
 
+export const icon = () => css`
+  font-family: 'Tossface';
+`;
+
 export const title = () => css`
   color: ${colorToken.gray[2]};
 `;

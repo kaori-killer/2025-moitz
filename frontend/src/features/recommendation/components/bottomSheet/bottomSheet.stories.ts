@@ -2,8 +2,9 @@ import {
   StartingPlacesMock,
   RecommendedLocationsMock,
 } from '@mocks/LocationsMock';
+import { LocationsMock } from '@mocks/LocationsMock';
 
-import { withContainer } from '@sb/decorators/withContainer';
+import { withLayout } from '@sb/decorators/withLayout';
 
 import BottomSheet from './BottomSheet';
 
@@ -11,7 +12,7 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5';
 
 const meta = {
   component: BottomSheet,
-  decorators: [withContainer],
+  decorators: [withLayout],
   parameters: {
     layout: 'centered',
   },
@@ -43,7 +44,7 @@ export const Default: Story = {
   args: {
     startingLocations: StartingPlacesMock,
     recommendedLocations: RecommendedLocationsMock,
-    conditionID: 'NOT_SELECTED',
+    conditionIDs: ['CAFE'],
     selectedLocation: null,
     handleSpotClick: () => {},
   },
@@ -53,8 +54,18 @@ export const Short: Story = {
   args: {
     startingLocations: StartingPlacesMock,
     recommendedLocations: RecommendedLocationsMock.slice(0, 2),
-    conditionID: 'NOT_SELECTED',
+    conditionIDs: ['CAFE'],
     selectedLocation: null,
+    handleSpotClick: () => {},
+  },
+};
+
+export const Detail: Story = {
+  args: {
+    startingLocations: StartingPlacesMock,
+    recommendedLocations: RecommendedLocationsMock.slice(0, 2),
+    conditionIDs: ['CAFE'],
+    selectedLocation: LocationsMock.locations[0],
     handleSpotClick: () => {},
   },
 };

@@ -47,6 +47,7 @@ export default function common(envVars = {}) {
         '@shared/styles': path.resolve(__dirname, 'src/shared/styles'),
         '@shared/types': path.resolve(__dirname, 'src/shared/types'),
         '@icons': path.resolve(__dirname, 'assets/icon'),
+        '@image': path.resolve(__dirname, 'assets/image'),
         '@mocks': path.resolve(__dirname, 'src/mocks'),
         '@config': path.resolve(__dirname, 'src/config'),
         '@sb': path.resolve(__dirname, '.storybook'),
@@ -75,6 +76,10 @@ export default function common(envVars = {}) {
                 },
               ]
             : []),
+          {
+            from: 'assets',
+            to: 'assets',
+          },
         ],
       }),
     ],

@@ -45,6 +45,9 @@
       "@icons/*": [
         "assets/icon/*"
       ],
+      "@image/*": [
+        "assets/image/*"
+      ],
       "@mocks/*": [
         "src/mocks/*"
       ],
