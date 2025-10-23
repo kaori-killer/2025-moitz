@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
 
 import useVote from '@entities/location/hooks/useVote';
@@ -11,18 +12,21 @@ export type useVoteFormReturn = {
   ) => Promise<void>;
   isVoting: boolean;
   isError: boolean;
+  errorMessage: string;
+  clearError: () => void;
 };
 
 const useVoteForm = (): useVoteFormReturn => {
   const { isVoting, isError, vote } = useVote();
   const [selectedLocationName, setSelectedLocationName] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleVote = async (
     recommendationId: string,
     updateVoteCount: (locationName: string) => void,
   ) => {
     if (!selectedLocationName) {
-      console.error('역을 선택해주세요');
+      setErrorMessage('지역을 선택해주세요');
       return;
     }
 
@@ -30,11 +34,15 @@ const useVoteForm = (): useVoteFormReturn => {
       await vote(recommendationId, {
         locationName: selectedLocationName,
       });
-
       updateVoteCount(selectedLocationName);
+      setErrorMessage('');
     } catch (error) {
-      console.error('투표 실패:', error);
+      setErrorMessage('투표에 실패했습니다. 다시 시도해주세요.');
     }
+  };
+
+  const clearError = () => {
+    setErrorMessage('');
   };
 
   return {
@@ -43,6 +51,8 @@ const useVoteForm = (): useVoteFormReturn => {
     handleVote,
     isVoting,
     isError,
+    errorMessage,
+    clearError,
   };
 };
 

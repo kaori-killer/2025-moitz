@@ -17,8 +17,13 @@ interface VoteModalProps {
 }
 
 function VoteModal({ onClose, recommendationId }: VoteModalProps) {
-  const { selectedLocationName, setSelectedLocationName, handleVote, isError } =
-    useVoteForm();
+  const {
+    selectedLocationName,
+    setSelectedLocationName,
+    handleVote,
+    isError,
+    errorMessage,
+  } = useVoteForm();
   const {
     voteStatus,
     isLoading,
@@ -65,6 +70,9 @@ function VoteModal({ onClose, recommendationId }: VoteModalProps) {
             type="button"
             active={!!selectedLocationName}
           />
+          {errorMessage && (
+            <div css={voteModal.errorMessage()}>{errorMessage}</div>
+          )}
         </footer>
       </main>
     </Modal>
