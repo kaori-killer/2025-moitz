@@ -1,5 +1,6 @@
 import { VoteStatusResponse } from '@entities/location/api/fetchVoteStatus';
 
+import BottomButton from '@shared/components/bottomButton/BottomButton';
 import RefreshButton from '@shared/components/RefreshButton/RefreshButton';
 import { flex } from '@shared/styles/default.styled';
 
@@ -14,7 +15,22 @@ interface VoteOptionsProps {
   isLoading: boolean;
   isError: boolean;
   refetch: () => Promise<void>;
+  onClose: () => void;
+  onSubmit: () => void;
 }
+
+// function VoteOptions({ onClose }: VoteOptionsProps) {
+//   const [selectedOption, setSelectedOption] = useState<string>('');
+
+//   const handleOptionChange = (id: string) => {
+//     setSelectedOption((optionId) => {
+//       if (optionId === id) {
+//         return '';
+//       }
+//       return id;
+//     });
+//   };
+// >>>>>>> fe-dev
 
 function VoteOptions({
   selectedLocationName,
@@ -23,6 +39,7 @@ function VoteOptions({
   isLoading,
   isError,
   refetch,
+  onSubmit,
 }: VoteOptionsProps) {
   return (
     <section
@@ -31,7 +48,18 @@ function VoteOptions({
         voteOptions.candidateListWrapper(),
       ]}
     >
-      <RefreshButton onRefresh={refetch} />
+      <div
+        css={[
+          flex({ justify: 'flex-end', align: 'center' }),
+          voteOptions.refreshButtonWrapper(),
+        ]}
+      >
+        <RefreshButton onRefresh={refetch} />
+      </div>
+      <div className="visually-hidden">
+        투표 옵션 목록. 라디오 버튼으로 하나만 선택 가능합니다. 다른 옵션을
+        선택하면 이전 선택이 해제됩니다.
+      </div>
 
       {isLoading && (
         <div
@@ -84,6 +112,12 @@ function VoteOptions({
               onToggle={(id) => onSelectionChange?.(id)}
             />
           ))}
+          <BottomButton
+            text={'투표하기'}
+            onClick={onSubmit}
+            type="button"
+            active={true}
+          />
         </form>
       )}
     </section>

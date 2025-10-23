@@ -1,8 +1,8 @@
 import { StartingPlace } from '@entities/location/types/Location';
 
-import { flex, typography } from '@shared/styles/default.styled';
+import { typography } from '@shared/styles/default.styled';
 
-import Dot from '../dot/Dot';
+import SeparatedText from '../separatedText/SeparatedText';
 
 import * as startingSpotNameStyled from './startingSpotName.styled';
 
@@ -13,19 +13,11 @@ interface StartSpotNameProps {
 
 function StartingSpotName({ place, isLast }: StartSpotNameProps) {
   return (
-    <div
-      key={place.index}
-      css={flex({
-        justify: 'center',
-        align: 'center',
-        gap: 5,
-      })}
-    >
+    <SeparatedText key={place.index} isLast={isLast}>
       <span css={[typography.b2, startingSpotNameStyled.nameList()]}>
         {place.name}
       </span>
-      {!isLast && <Dot size={3} colorType="main" colorTokenIndex={1} />}
-    </div>
+    </SeparatedText>
   );
 }
 

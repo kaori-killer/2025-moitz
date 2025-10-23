@@ -2,7 +2,7 @@ import { LocationRequirement } from '@entities/location/types/LocationRequiremen
 
 export type RecommendationRequestBody = {
   startingPlaceNames: string[];
-  requirement: LocationRequirement;
+  requirements: LocationRequirement[];
 };
 
 export type RecommendationResponse = {

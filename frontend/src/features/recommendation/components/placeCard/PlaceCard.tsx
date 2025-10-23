@@ -11,7 +11,7 @@ interface PlaceCardProps {
 
 function PlaceCard({ place }: PlaceCardProps) {
   const handleClick = () => {
-    window.open(place.url, '_blank');
+    window.open(place.placeUrl, '_blank');
   };
 
   return (
