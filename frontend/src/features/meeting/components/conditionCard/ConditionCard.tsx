@@ -17,6 +17,8 @@ function ConditionCard({
   onClick,
   isSelected = false,
 }: ConditionCardProps) {
+  const descriptionId = `description-${contentText.replace(/\s+/g, '-').toLowerCase()}`;
+
   return (
     <button
       css={[
@@ -28,12 +30,16 @@ function ConditionCard({
       onClick={onClick}
       aria-pressed={isSelected}
       aria-label={contentText}
+      aria-describedby={descriptionId}
     >
       <div css={[typography.b1, conditionCard.icon()]} aria-hidden="true">
         {iconText}
       </div>
       <div css={[typography.b1, conditionCard.text()]}>{contentText}</div>
-      <div css={[typography.c2, conditionCard.description()]}>
+      <div
+        id={descriptionId}
+        css={[typography.c2, conditionCard.description()]}
+      >
         {descriptionText}
       </div>
     </button>
