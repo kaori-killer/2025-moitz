@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 
 import { colorToken, borderRadiusToken } from '@shared/styles/tokens';
 
-const MIN_VH = 12; // 최소 높이
 const MAX_VH = 82; // 최대 높이
 
 export const base = () => css`
@@ -20,9 +19,8 @@ export const container = (positionPercent: number) => css`
     margin: auto;
   }
 
-  height: ${MIN_VH + (MAX_VH - MIN_VH) * (positionPercent / 100)}dvh;
-  min-height: ${MIN_VH}dvh;
-  max-height: ${MAX_VH}dvh;
+  height: ${MAX_VH}dvh;
+  transform: translateY(${100 - positionPercent}%);
 
   position: relative;
   padding: 0px 20px;
@@ -74,7 +72,7 @@ export const content = () => css`
 `;
 
 export const animate = () => css`
-  transition: height 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 
   // 사용자가 '애니메이션 줄이기'를 켜둔 경우에 맞춰 애니메이션/트랜지션을 꺼 주는 접근성 설정
   @media (prefers-reduced-motion: reduce) {
