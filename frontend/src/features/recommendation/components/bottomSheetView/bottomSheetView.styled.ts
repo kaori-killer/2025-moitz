@@ -20,20 +20,23 @@ export const container = (positionPercent: number) => css`
   }
 
   height: ${MAX_VH}dvh;
-  transform: translateY(${100 - positionPercent}%);
+  transform: translate3d(0, ${100 - positionPercent}%, 0);
 
   position: relative;
   padding: 0px 20px;
   background-color: ${colorToken.gray[8]};
   border-top-left-radius: ${borderRadiusToken[10]};
   border-top-right-radius: ${borderRadiusToken[10]};
+
+  will-change: transform;
+  contain: layout style paint;
 `;
 
 export const voteButtonWrapper = () => css`
   position: absolute;
   top: -50px;
   right: -20px;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
 `;
 
 export const header = () => css`
