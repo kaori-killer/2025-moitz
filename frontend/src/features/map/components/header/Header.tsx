@@ -2,6 +2,7 @@ import { useRef, useEffect } from 'react';
 import { Link } from 'react-router';
 
 import { SelectedLocation } from '@features/recommendation/types/SelectedLocation';
+import { useShareMetadata } from '@features/map/hooks/useShareMetadata';
 import { useToastActionsContext } from '@features/toast/hooks/useToastActionsContext';
 
 import MapIconButton from '@shared/components/mapIconButton/MapIconButton';
@@ -21,6 +22,7 @@ interface HeaderProps {
 }
 
 function Header({ selectedLocation, onLocationChange }: HeaderProps) {
+  const { getShareUrl } = useShareMetadata();
   const { showToast } = useToastActionsContext();
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -35,7 +37,8 @@ function Header({ selectedLocation, onLocationChange }: HeaderProps) {
   };
 
   const handleShareButtonClick = () => {
-    navigator.clipboard.writeText(window.location.href);
+    const shareUrl = getShareUrl();
+    navigator.clipboard.writeText(shareUrl);
     showToast('링크가 복사되었습니다.');
   };
 
