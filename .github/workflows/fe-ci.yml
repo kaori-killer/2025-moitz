@@ -51,11 +51,11 @@ jobs:
         run: npx jest --verbose --coverage
 
       - name: 빌드 실행 (fe-prod)
-        if: (github.event_name == 'push' && github.ref == 'refs/heads/fe-prod') || (github.event_name == 'pull_request' && github.base_ref == 'fe-prod')
+        if: (github.event_name == 'push' && github.ref == 'refs/heads/fe-prod') || (github.event_name == 'pull_request' && github.base_ref == 'fe-prod') || (github.event_name == 'workflow_call' && github.ref == 'refs/heads/fe-prod')
         run: npm run build:prod
 
       - name: 빌드 실행 (fe-dev)
-        if: (github.event_name == 'push' && github.ref == 'refs/heads/fe-dev') || (github.event_name == 'pull_request' && github.base_ref == 'fe-dev')
+        if: (github.event_name == 'push' && github.ref == 'refs/heads/fe-dev') || (github.event_name == 'pull_request' && github.base_ref == 'fe-dev') || (github.event_name == 'workflow_call' && github.ref == 'refs/heads/fe-dev')
         run: npm run build:dev
 
       - name: 빌드 결과물 업로드
