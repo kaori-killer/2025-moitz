@@ -7,12 +7,16 @@ on:
       - fe-dev
   pull_request:
     types: [opened, synchronize, reopened]
-  workflow_call: {}
+  workflow_call:
+    outputs:
+      artifact-name:
+        description: '빌드 결과물 아티팩트 이름'
+        value: ${{ jobs.build.outputs.artifact-name }}
 
 jobs:
   build:
     outputs:
-      artifact-name: dist
+      artifact-name: build-result
     if: >
       github.actor == 'kaori-killer' || 
       github.actor == 'eunsoA' || 
@@ -61,6 +65,6 @@ jobs:
       - name: 빌드 결과물 업로드
         uses: actions/upload-artifact@v4
         with:
-          name: dist
-          path: frontend/dist
+          name: build-result
+          path: dist
           retention-days: 1
