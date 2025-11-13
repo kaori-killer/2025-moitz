@@ -6,9 +6,11 @@ import { Location } from '@entities/location/types/Location';
 import { LocationsRequestBodyMock } from '@mocks/LocationsRequestBodyMock';
 import { server } from '@mocks/server';
 
+import { getApiBaseUrl } from '@config/env';
+
 import useLocations from './useLocations';
 
-const BASE_URL = process.env.API_BASE_URL;
+const BASE_URL = getApiBaseUrl();
 
 describe('useLocations', () => {
   describe('getRecommendationId', () => {
