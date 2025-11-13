@@ -24,7 +24,7 @@ jobs:
       github.event.pull_request.user.login == 'kaori-killer' || 
       github.event.pull_request.user.login == 'eunsoA'
     runs-on: ubuntu-latest
-    environment: ${{ (github.ref == 'refs/heads/fe-prod' || github.base_ref == 'fe-prod') && 'prod' || 'dev' }}
+    environment: ${{ (github.ref == 'refs/heads/fe-prod' || github.base_ref == 'fe-prod') && 'production' || 'development' }}
     defaults:
       run:
         working-directory: ./frontend
