@@ -1,13 +1,21 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import dotenv from 'dotenv';
 import webpack from 'webpack';
 import { merge } from 'webpack-merge';
 
 import common from './webpack.common.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const mode = 'development';
 
-const { parsed: envParsed } = dotenv.config({ path: '.env' }) || {};
-const envVars = envParsed || {};
+// .env 파일 로드 시도 (절대 경로 사용)
+const envPath = path.resolve(__dirname, '.env');
+const dotenvResult = dotenv.config({ path: envPath });
+const envVars = dotenvResult.parsed || {};
 
 // DefinePlugin에 주입할 형태로 변환 + NODE_ENV 보장
 const defineEnv = Object.entries(envVars).reduce(
