@@ -1,6 +1,4 @@
-import { getApiBaseUrl } from '@config/env';
-
-const BASE_URL = getApiBaseUrl();
+const BASE_URL = process.env.API_BASE_URL;
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
