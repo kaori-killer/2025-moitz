@@ -14,6 +14,7 @@ interface BottomSheetViewProps {
   handleProps: React.HTMLAttributes<HTMLDivElement>;
   isAnimating: boolean;
   onContainerTransitionEnd: React.TransitionEventHandler<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement>;
 }
 
 function BottomSheetView({
@@ -22,6 +23,7 @@ function BottomSheetView({
   handleProps,
   isAnimating,
   onContainerTransitionEnd,
+  containerRef,
 }: BottomSheetViewProps) {
   const { id } = useParams<{ id: string }>();
   const { openVoteModal } = useVoteModal();
@@ -35,6 +37,7 @@ function BottomSheetView({
   return (
     <div css={[bottomSheetView.base()]}>
       <div
+        ref={containerRef}
         css={[
           flex({ direction: 'column' }),
           shadow.bottom_sheet,
