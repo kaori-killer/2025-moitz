@@ -50,7 +50,7 @@ function BottomSheet({
   }, [positionPercent]);
 
   // 애니메이션이 끝나면 다시 OFF
-  const handleTransitionEnd: React.TransitionEventHandler
+  const handleTransitionEnd: React.TransitionEventHandler<
     HTMLDivElement
   > = () => {
     setIsAnimating(false);
