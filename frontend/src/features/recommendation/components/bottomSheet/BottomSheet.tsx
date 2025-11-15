@@ -137,14 +137,16 @@ function BottomSheet({
     // 방향 기반 스냅 결정 (2%를 살짝의 기준으로 사용)
     const target = decideDirectionalSnapTarget(start, current, SNAP_POINTS, 2);
 
-    // DOM 스타일 초기화 (React가 다시 제어하도록)
-    if (containerRef.current) {
-      containerRef.current.style.transform = '';
-    }
-
     // 스냅 이동 시에만 애니메이션 적용
     setIsAnimating(true);
     setPositionPercent(target);
+
+    // React가 리렌더링한 후에 DOM 스타일 초기화 (React가 다시 제어하도록)
+    requestAnimationFrame(() => {
+      if (containerRef.current) {
+        containerRef.current.style.transform = '';
+      }
+    });
   };
 
   return (
