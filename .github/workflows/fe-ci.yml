@@ -59,16 +59,6 @@ jobs:
             echo "DEV_API_BASE_URL=${{ secrets.DEV_API_BASE_URL }}" >> .env
           fi
 
-      - name: .env 파일 확인 (디버그)
-        run: |
-          echo "=== .env 내용 (값 마스킹) ==="
-          while IFS='=' read -r key value; do
-            if [ -n "$key" ]; then
-              masked=$(printf '%*s' "${#value}" '' | tr ' ' '*')
-              echo "$key=$masked (길이: ${#value}자)"
-            fi
-          done < .env
-
       - name: 코드 린트 검사
         run: npx eslint --ext .js,.jsx,.ts,.tsx src
 
