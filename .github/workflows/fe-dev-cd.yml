@@ -15,6 +15,7 @@ env:
 jobs:
   ci:
     uses: ./.github/workflows/fe-ci.yml
+    secrets: inherit
 
   cd:
     needs: ci
