@@ -47,6 +47,8 @@ jobs:
         run: |
           echo "NAVER_MAP_API_KEY=${{ secrets.NAVER_MAP_API_KEY }}" > .env
           echo "API_BASE_URL=${{ secrets.API_BASE_URL }}" >> .env
+          echo "PROD_API_BASE_URL=${{ secrets.PROD_API_BASE_URL }}" >> .env
+          echo "DEV_API_BASE_URL=${{ secrets.DEV_API_BASE_URL }}" >> .env
           echo "GOOGLE_ANALYTICS_TRACKING_ID=${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}" >> .env
           echo "CLARITY_ID=${{ secrets.CLARITY_ID }}" >> .env
           echo "SENTRY_DSN=${{ secrets.SENTRY_DSN }}" >> .env
