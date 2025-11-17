@@ -12,7 +12,7 @@ export const base = () => css`
   z-index: 100;
 `;
 
-export const container = (positionPercent: number) => css`
+export const container = () => css`
   width: 100%;
   @media (min-width: 400px) {
     width: 400px;
@@ -20,7 +20,6 @@ export const container = (positionPercent: number) => css`
   }
 
   height: ${MAX_VH}dvh;
-  transform: translate3d(0, ${100 - positionPercent}%, 0);
 
   position: relative;
   padding: 0px 20px;

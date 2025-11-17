@@ -117,7 +117,7 @@ function BottomSheet({
 
     // 6) DOM 직접 조작으로 즉시 반영
     if (containerRef.current) {
-      containerRef.current.style.transform = `translateY(${100 - clampedPercent}%)`;
+      containerRef.current.style.transform = `translate3d(0, ${100 - clampedPercent}%, 0)`;
     }
   };
 
@@ -140,13 +140,6 @@ function BottomSheet({
     // 스냅 이동 시에만 애니메이션 적용
     setIsAnimating(true);
     setPositionPercent(target);
-
-    // React가 리렌더링한 후에 DOM 스타일 초기화 (React가 다시 제어하도록)
-    requestAnimationFrame(() => {
-      if (containerRef.current) {
-        containerRef.current.style.transform = '';
-      }
-    });
   };
 
   return (

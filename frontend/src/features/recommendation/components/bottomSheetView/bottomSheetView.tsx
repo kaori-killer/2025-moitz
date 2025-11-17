@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router';
 
 import useVoteModal from '@widgets/voting/hooks/useVoteModal';
@@ -35,13 +34,11 @@ function BottomSheetView({
   };
 
   return (
-    <div css={[bottomSheetView.base()]}>
       <div
-        ref={containerRef}
         css={[
           flex({ direction: 'column' }),
           shadow.bottom_sheet,
-          bottomSheetView.container(positionPercent),
+          bottomSheetView.container(),
           isAnimating && bottomSheetView.animate(),
         ]}
         // CSS transition이 끝났을 때 호출되는 이벤트 핸들러
