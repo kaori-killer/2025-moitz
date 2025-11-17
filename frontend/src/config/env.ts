@@ -2,7 +2,9 @@
  * 환경별 API Base URL을 반환하는 유틸리티 함수
  */
 export const getApiBaseUrl = (): string => {
-  return process.env.API_BASE_URL || '';
+  return process.env.NODE_ENV === 'production'
+    ? process.env.PROD_API_BASE_URL || ''
+    : process.env.DEV_API_BASE_URL || '';
 };
 
 /**
