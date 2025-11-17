@@ -61,14 +61,13 @@ jobs:
 
       - name: .env 파일 확인 (디버그)
         run: |
-          echo "=== DEV_API_BASE_URL 확인 ==="
-          if grep -q "DEV_API_BASE_URL=" .env; then
-            value=$(grep "DEV_API_BASE_URL=" .env | cut -d'=' -f2)
-            masked=$(printf '%*s' "${#value}" '' | tr ' ' '*')
-            echo "DEV_API_BASE_URL=$masked (길이: ${#value}자)"
-          else
-            echo "❌ DEV_API_BASE_URL이 .env 파일에 없습니다"
-          fi
+          echo "=== .env 내용 (값 마스킹) ==="
+          while IFS='=' read -r key value; do
+            if [ -n "$key" ]; then
+              masked=$(printf '%*s' "${#value}" '' | tr ' ' '*')
+              echo "$key=$masked (길이: ${#value}자)"
+            fi
+          done < .env
 
       - name: 코드 린트 검사
         run: npx eslint --ext .js,.jsx,.ts,.tsx src
