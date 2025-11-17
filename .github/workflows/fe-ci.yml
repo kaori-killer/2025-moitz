@@ -59,15 +59,6 @@ jobs:
             echo "DEV_API_BASE_URL=${{ secrets.DEV_API_BASE_URL }}" >> .env
           fi
 
-      - name: .env 파일 확인 (디버그)
-        run: |
-          echo "=== .env 내용 (값 마스킹) ==="
-          while IFS='=' read -r key value; do
-            if [ -n "$key" ]; then
-              echo "$key=***"
-            fi
-          done < .env
-
       - name: 코드 린트 검사
         run: npx eslint --ext .js,.jsx,.ts,.tsx src
 
@@ -84,14 +75,6 @@ jobs:
       - name: 빌드 실행 (fe-dev)
         if: (github.event_name == 'push' && github.ref == 'refs/heads/fe-dev') || (github.event_name == 'pull_request' && github.base_ref == 'fe-dev') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/fe-dev')
         run: npm run build:dev
-
-      - name: 빌드 결과에서 getApiBaseUrl 확인 (디버깅용)
-        if: (github.event_name == 'push' && github.ref == 'refs/heads/fe-dev') || (github.event_name == 'pull_request' && github.base_ref == 'fe-dev')
-        run: |
-          echo "=== getApiBaseUrl 정의 찾기 ==="
-          FILE=$(grep -R "getApiBaseUrl" -l dist | head -n 1)
-          echo "Target file: $FILE"
-          sed -n '1,120p' "$FILE" | sed -n '/getApiBaseUrl/,/ENV_CONFIG/p' || true
 
       - name: 빌드 결과물 업로드
         uses: actions/upload-artifact@v4
