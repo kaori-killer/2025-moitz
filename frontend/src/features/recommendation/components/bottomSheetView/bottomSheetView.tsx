@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 
 import useVoteModal from '@widgets/voting/hooks/useVoteModal';
@@ -27,6 +28,12 @@ function BottomSheetView({
   const { id } = useParams<{ id: string }>();
   const { openVoteModal } = useVoteModal();
 
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.style.transform = `translate3d(0, ${100 - positionPercent}%, 0)`;
+    }
+  }, [positionPercent, containerRef]);
+
   const handleVoteButtonClick = async () => {
     if (id) {
       await openVoteModal(id);
@@ -34,6 +41,7 @@ function BottomSheetView({
   };
 
   return (
+    <div css={[bottomSheetView.base()]} ref={containerRef}>
       <div
         css={[
           flex({ direction: 'column' }),
