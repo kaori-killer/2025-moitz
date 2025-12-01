@@ -1,0 +1,83 @@
+import { css } from '@emotion/react';
+
+const MAX_VH = 82; // 최대 높이
+
+export const base = () => css`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+`;
+
+export const container = () => css`
+  width: 100%;
+  @media (min-width: 400px) {
+    width: 400px;
+    margin: auto;
+  }
+
+  height: ${MAX_VH}dvh;
+
+  position: relative;
+  padding: 0px 20px;
+  background-color: #ffffff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  will-change: transform;
+  contain: layout style paint;
+`;
+
+export const header = () => css`
+  padding: 5px 0px;
+  cursor: grab;
+
+  /* 브라우저의 기본 터치 제스처(스크롤, 스와이프, 더블탭 확대, 핀치줌 등)를 전부 끄겠다는 CSS 설정 */
+  /* 핸들을 끌 때 페이지가 스크롤돼서 드래그가 끊기는 걸 방지 */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+`;
+
+export const handle = () => css`
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  margin: 8px auto;
+  display: block;
+  background-color: #d1d5db;
+
+  /* 현재 handle을 장식용 막대로 구현한 상태임 */
+  /* 요소 위를 눌러도 클릭/드래그 타깃이 되지 않고, 이벤트가 뒤(혹은 부모)로 통과 */
+  pointer-events: none;
+`;
+
+export const content = () => css`
+  padding-bottom: 20px;
+  min-height: 0;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  overscroll-behavior: contain; /* 바디로 스크롤 전파 방지 */
+`;
+
+export const animate = () => css`
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* 사용자가 '애니메이션 줄이기'를 켜둔 경우에 맞춰 애니메이션/트랜지션을 꺼 주는 접근성 설정 */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+`;
+
