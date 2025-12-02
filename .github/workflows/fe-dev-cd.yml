@@ -8,8 +8,8 @@ on:
 
 env:
   AWS_REGION: ap-northeast-2
-  S3_BUCKET: techcourse-project-2025
-  FE_DEV_PREFIX: moitz/fe-dev
+  S3_BUCKET: moitz-service
+  FE_DEV_PREFIX: dev
   FE_CACHE_PATH: /* # 전체 무효화
 
 jobs:
