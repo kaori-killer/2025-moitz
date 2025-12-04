@@ -8,8 +8,8 @@ on:
 
 env:
   AWS_REGION: ap-northeast-2
-  S3_BUCKET: techcourse-project-2025
-  FE_PROD_PREFIX: moitz/fe-prod
+  S3_BUCKET: moitz-service
+  FE_PROD_PREFIX: prod
   FE_CACHE_PATH: /* # 전체 무효화
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
       github.actor == 'eunsoA' || 
       github.actor == 'kaori-killer'
 
-    runs-on: [self-hosted, dev]
+    runs-on: [self-hosted, prod]
 
     defaults:
       run:
