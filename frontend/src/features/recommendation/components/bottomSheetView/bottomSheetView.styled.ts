@@ -28,7 +28,7 @@ export const container = () => css`
   border-top-right-radius: ${borderRadiusToken[10]};
 
   will-change: transform;
-  contain: layout style paint;
+  contain: layout style;
 `;
 
 export const voteButtonWrapper = () => css`
