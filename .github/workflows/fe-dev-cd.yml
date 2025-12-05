@@ -28,7 +28,7 @@ jobs:
       github.actor == 'eunsoA' || 
       github.actor == 'kaori-killer'
 
-    runs-on: [self-hosted, prod]
+    runs-on: ubuntu-latest
 
     defaults:
       run:
