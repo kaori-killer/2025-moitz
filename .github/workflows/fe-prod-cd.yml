@@ -28,7 +28,7 @@ jobs:
       github.actor == 'eunsoA' || 
       github.actor == 'kaori-killer'
 
-    runs-on: [self-hosted, prod]
+    runs-on: ubuntu-latest
 
     defaults:
       run:
@@ -41,6 +41,12 @@ jobs:
     steps:
       - name: 코드 가져오기
         uses: actions/checkout@v4
+
+      - name: AWS 자격 증명 설정 (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/FEGitHubActionsDeploymentRole
+          aws-region: ap-northeast-2
 
       - name: CI 빌드 결과물 다운로드
         uses: actions/download-artifact@v4
