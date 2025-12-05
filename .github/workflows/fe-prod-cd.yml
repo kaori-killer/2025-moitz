@@ -19,6 +19,9 @@ jobs:
 
   cd:
     needs: ci
+    permissions:
+      id-token: write
+      contents: read
     if: >
       (github.event_name == 'push' && needs.ci.result == 'success') ||
       (github.event.pull_request.merged == true && needs.ci.result == 'success') ||
