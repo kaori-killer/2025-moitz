@@ -6,6 +6,10 @@ on:
     paths: ['frontend/**']
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   AWS_REGION: ap-northeast-2
   S3_BUCKET: moitz-service
@@ -19,9 +23,6 @@ jobs:
 
   cd:
     needs: ci
-    permissions:
-      id-token: write
-      contents: read
     if: >
       (github.event_name == 'push' && needs.ci.result == 'success') ||
       (github.event.pull_request.merged == true && needs.ci.result == 'success') ||
