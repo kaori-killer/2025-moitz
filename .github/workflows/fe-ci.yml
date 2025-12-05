@@ -73,7 +73,7 @@ jobs:
         run: npm run build:prod
 
       - name: 빌드 실행 (fe-dev)
-        if: (github.event_name == 'push' && github.ref == 'refs/heads/fe-dev') || (github.event_name == 'pull_request' && github.base_ref == 'fe-dev') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/fe-dev')
+        if: (github.event_name == 'push' && github.ref == 'refs/heads/fe-dev') || (github.event_name == 'pull_request' && github.base_ref == 'fe-dev') || (github.event_name == 'workflow_dispatch')
         run: npm run build:dev
 
       - name: 빌드 결과물 업로드
