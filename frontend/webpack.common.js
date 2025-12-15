@@ -77,8 +77,8 @@ export default function common(envVars = {}) {
               ]
             : []),
           {
-            from: 'public/og-image.png',
-            to: 'og-image.png',
+            from: 'public/og-image*.png',
+            to: '[name][ext]',
           },
         ],
       }),
