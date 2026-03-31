@@ -84,6 +84,10 @@ export default function common(envVars = {}, mode = 'development') {
             from: 'public/google*.html',
             to: '[name][ext]',
           },
+          {
+            from: 'public/naver*.html',
+            to: '[name][ext]',
+          },
         ],
       }),
     ],
