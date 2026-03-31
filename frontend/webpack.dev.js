@@ -18,7 +18,7 @@ const defineEnv = Object.entries(envVars).reduce(
   { 'process.env.NODE_ENV': JSON.stringify(mode) },
 );
 
-export default merge(common(envVars), {
+export default merge(common(envVars, mode), {
   mode,
   devtool: 'eval-cheap-module-source-map',
   devServer: {
