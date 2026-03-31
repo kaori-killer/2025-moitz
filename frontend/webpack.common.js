@@ -80,6 +80,10 @@ export default function common(envVars = {}, mode = 'development') {
             from: 'public/og-image*.png',
             to: '[name][ext]',
           },
+          {
+            from: 'public/google*.html',
+            to: '[name][ext]',
+          },
         ],
       }),
     ],
