@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // dev/prod에서 주입한 envVars를 받아 index.html에 templateParameters로 전달
-export default function common(envVars = {}) {
+export default function common(envVars = {}, mode = 'development') {
   return {
     entry: './main.tsx',
     output: {
@@ -63,12 +63,12 @@ export default function common(envVars = {}) {
         patterns: [
           {
             from:
-              process.env.NODE_ENV === 'production'
+              mode === 'production'
                 ? 'public/robots-prod.txt'
                 : 'public/robots-dev.txt',
             to: 'robots.txt',
           },
-          ...(process.env.NODE_ENV === 'production'
+          ...(mode === 'production'
             ? [
                 {
                   from: 'public/sitemap.xml',
@@ -77,8 +77,8 @@ export default function common(envVars = {}) {
               ]
             : []),
           {
-            from: 'public/og-image.png',
-            to: 'og-image.png',
+            from: 'public/og-image*.png',
+            to: '[name][ext]',
           },
         ],
       }),
