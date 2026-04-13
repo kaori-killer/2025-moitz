@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-import { colorToken } from '@shared/styles/tokens';
+import { colorToken, typoToken } from '@shared/styles/tokens';
 
 export const base = () => css`
   width: 100%;
@@ -12,4 +12,12 @@ export const base = () => css`
 export const headerLogo = () => css`
   width: 100%;
   padding: 70px 0;
+`;
+
+export const footer = () => css`
+  width: 100%;
+  padding: 30px 0 10px;
+  text-align: center;
+  font-size: ${typoToken.captions.c1};
+  color: ${colorToken.gray[6]};
 `;
