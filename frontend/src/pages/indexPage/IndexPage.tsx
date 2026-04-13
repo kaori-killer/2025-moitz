@@ -48,6 +48,9 @@ function IndexPage() {
         <HeaderLogo />
       </header>
       <MeetingForm />
+      <footer css={indexPage.footer()}>
+        © 2025 Moitz. All rights reserved.
+      </footer>
     </main>
   );
 }
