@@ -12,17 +12,17 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    index: {
-      control: { type: 'number', min: 1, max: 5 },
-      description: '마커에 표시될 인덱스 번호',
-    },
     name: {
       control: { type: 'text' },
       description: '추천 장소 이름',
     },
-    description: {
+    tagInfo: {
       control: { type: 'text' },
       description: '추천 장소 설명',
+    },
+    tag: {
+      control: { type: 'text' },
+      description: '추천 태그',
     },
     avgMinutes: {
       control: { type: 'number' },
@@ -43,9 +43,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    index: 1,
     name: '역이름',
-    description: '설명입니다.',
+    tagInfo: '설명입니다.',
+    tag: 'GENERAL',
     avgMinutes: 10,
     isBest: false,
     onClick: () => {},
@@ -54,9 +54,9 @@ export const Default: Story = {
 
 export const Best: Story = {
   args: {
-    index: 1,
     name: '역이름',
-    description: '설명입니다.',
+    tagInfo: '설명입니다.',
+    tag: 'FAIRNESS',
     avgMinutes: 10,
     isBest: true,
     onClick: () => {},

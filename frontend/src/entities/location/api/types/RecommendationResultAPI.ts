@@ -1,3 +1,5 @@
+import { TagBadgeType } from '@shared/components/tagBadge/TagBadge';
+
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
 
 export type StartingPlaceResponse = {
@@ -53,8 +55,9 @@ export type RecommendedLocationResponse = {
   name: string;
   avgMinutes: number;
   isBest: boolean;
-  description: string;
-  reason: string;
+  tagInfo: string;
+  locationInfo: string;
+  tag: TagBadgeType;
   places?: {
     [key in LocationRequirement]?: RecommendedPlaceResponse[];
   };

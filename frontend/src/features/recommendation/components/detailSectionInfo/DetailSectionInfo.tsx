@@ -19,7 +19,7 @@ function DetailSectionInfo({ selectedLocation }: DetailSectionInfoProps) {
     >
       <div css={detailSectionInfo.reason()}>
         <p css={[typography.b2, detailSectionInfo.reasonText()]}>
-          {selectedLocation.reason}
+          {selectedLocation.locationInfo}
         </p>
       </div>
     </DetailSection>
