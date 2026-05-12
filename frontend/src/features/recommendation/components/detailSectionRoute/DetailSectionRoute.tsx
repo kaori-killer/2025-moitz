@@ -21,7 +21,6 @@ function DetailSectionRoute({
     <DetailSection
       isHeader={false}
       title={'각 출발지로부터 이동 방법'}
-      isBestBadge={false}
     >
       <div css={flex({ direction: 'column', gap: 20 })}>
         {selectedLocation.routes.map((route) => (

@@ -15,7 +15,7 @@ function DetailSectionInfo({ selectedLocation }: DetailSectionInfoProps) {
     <DetailSection
       isHeader={true}
       title={selectedLocation.name}
-      isBestBadge={selectedLocation.isBest}
+      tag={selectedLocation.tag}
     >
       <div css={detailSectionInfo.reason()}>
         <p css={[typography.b2, detailSectionInfo.reasonText()]}>
