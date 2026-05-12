@@ -52,6 +52,7 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: [
+            '@babel/preset-env',
             [
               '@babel/preset-react',
               { runtime: 'automatic', importSource: '@emotion/react' },
@@ -60,7 +61,6 @@ module.exports = {
               '@babel/preset-typescript',
               { onlyRemoveTypeImports: true, allowDeclareFields: true },
             ],
-            '@babel/preset-env',
           ],
           plugins: ['@emotion'],
         },

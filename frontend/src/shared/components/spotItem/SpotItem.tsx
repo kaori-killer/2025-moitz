@@ -1,24 +1,21 @@
-import Badge from '@shared/components/badge/Badge';
-import MarkerIndex from '@shared/components/markerIndex/MarkerIndex';
+import TagBadge, { TagBadgeType } from '@shared/components/tagBadge/TagBadge';
 import { flex, typography } from '@shared/styles/default.styled';
 
 import * as spotItem from './spotItem.styled';
 
 interface SpotItemProps {
-  index: number;
   name: string;
-  description: string;
+  tagInfo: string;
+  tag: TagBadgeType;
   avgMinutes: number;
-  isBest: boolean;
   onClick: () => void;
 }
 
 function SpotItem({
-  index,
   name,
-  description,
+  tagInfo,
+  tag,
   avgMinutes,
-  isBest = false,
   onClick,
 }: SpotItemProps) {
   return (
@@ -29,9 +26,8 @@ function SpotItem({
         spotItem.base(),
       ]}
       onClick={onClick}
-      aria-label={`${name} ${isBest ? ' 베스트 장소' : ''}, ${description}, 평균 이동시간 ${avgMinutes}분`}
+      aria-label={`${name}, ${tagInfo}, 평균 이동시간 ${avgMinutes}분`}
     >
-      <MarkerIndex index={index} type="recommended" />
       <div
         css={[
           flex({ direction: 'column', gap: 10 }),
@@ -41,12 +37,12 @@ function SpotItem({
         <div css={flex({ justify: 'space-between', align: 'center' })}>
           <div css={flex({ align: 'center', gap: 14 })}>
             <span css={typography.h3}>{name}</span>
-            {isBest && <Badge type="best" text="best" />}
+            <TagBadge type={tag} />
           </div>
           <span css={typography.c1}>평균 {avgMinutes}분</span>
         </div>
         <p css={[flex(), typography.c1, spotItem.description()]}>
-          {description}
+          {tagInfo}
         </p>
       </div>
     </button>

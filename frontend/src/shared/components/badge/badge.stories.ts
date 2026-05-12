@@ -11,7 +11,7 @@ const meta = {
   argTypes: {
     type: {
       control: { type: 'radio' },
-      options: ['best', 'category', 'transfer'],
+      options: ['category', 'transfer'],
       description: '뱃지 타입',
     },
     text: {
@@ -23,10 +23,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-export const Best: Story = {
-  args: { type: 'best', text: 'best' },
-};
 
 export const Category: Story = {
   args: { type: 'category', text: 'category' },

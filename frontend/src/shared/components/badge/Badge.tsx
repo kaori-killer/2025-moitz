@@ -2,7 +2,7 @@ import { flex } from '@shared/styles/default.styled';
 
 import * as badge from './badge.styled';
 
-export type BadgeType = 'best' | 'category' | 'transfer';
+export type BadgeType = 'category' | 'transfer';
 
 interface BadgeProps {
   type: BadgeType;

@@ -13,12 +13,6 @@ type BadgeStyle = {
 };
 
 const BADGE_STYLES: Record<BadgeType, BadgeStyle> = {
-  best: {
-    padding: '3px 10px',
-    color: colorToken.gray[8],
-    backgroundColor: colorToken.orange[2],
-    typography: typography.sh2,
-  },
   category: {
     padding: '3px 6px',
     color: colorToken.gray[2],

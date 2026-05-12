@@ -91,10 +91,33 @@ const borderRadiusToken = {
   100: 'var(--radius-100)',
 };
 
+const tagBadgeColorToken = {
+  fairness: {
+    text: 'var(--color-tag-badge-fairness-text)',
+    bg: 'var(--color-tag-badge-fairness-bg)',
+  },
+  maxBurdenRelief: {
+    text: 'var(--color-tag-badge-max-burden-relief-text)',
+    bg: 'var(--color-tag-badge-max-burden-relief-bg)',
+  },
+  efficiency: {
+    text: 'var(--color-tag-badge-efficiency-text)',
+    bg: 'var(--color-tag-badge-efficiency-bg)',
+  },
+  transfer: {
+    text: 'var(--color-tag-badge-transfer-text)',
+    bg: 'var(--color-tag-badge-transfer-bg)',
+  },
+  general: {
+    text: 'var(--color-tag-badge-general-text)',
+    bg: 'var(--color-tag-badge-general-bg)',
+  },
+};
+
 const layout = {
   maxWidth: 'var(--layout-max-width)',
   minWidth: 'var(--layout-min-width)',
   media_maxWidth: '400px',
 };
 
-export { colorToken, typoToken, borderRadiusToken, layout };
+export { colorToken, typoToken, borderRadiusToken, tagBadgeColorToken, layout };
