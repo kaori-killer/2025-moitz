@@ -34,7 +34,6 @@ function DetailSectionPlace({ selectedLocation }: DetailSectionPlaceProps) {
     <DetailSection
       isHeader={false}
       title={'주변 추천 장소'}
-      isBestBadge={false}
     >
       <div css={[flex({ gap: 5 })]}>
         {categories.map((category) => (

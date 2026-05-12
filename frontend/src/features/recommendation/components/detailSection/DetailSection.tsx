@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Badge from '@shared/components/badge/Badge';
+import TagBadge, { TagBadgeType } from '@shared/components/tagBadge/TagBadge';
 import { flex, typography } from '@shared/styles/default.styled';
 
 import * as detailSection from './detailSection.styled';
@@ -8,14 +8,14 @@ import * as detailSection from './detailSection.styled';
 interface DetailSectionProps {
   isHeader: boolean;
   title: string;
-  isBestBadge?: boolean;
+  tag?: TagBadgeType;
   children: React.ReactNode;
 }
 
 function DetailSection({
   isHeader,
   title,
-  isBestBadge = false,
+  tag,
   children,
 }: DetailSectionProps) {
   return (
@@ -29,7 +29,7 @@ function DetailSection({
         >
           {title}
         </span>
-        {isBestBadge && <Badge type="best" text="best" />}
+        {tag && <TagBadge type={tag} />}
       </div>
       {children}
     </div>
