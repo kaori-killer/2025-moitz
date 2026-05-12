@@ -30,6 +30,18 @@
   /* Blur Colors */
   --color-blur: rgba(0, 0, 0, 0.5);
 
+  /* Tag Badge Colors */
+  --color-tag-badge-fairness-text: #ffffff;
+  --color-tag-badge-fairness-bg: #63c9c2;
+  --color-tag-badge-max-burden-relief-text: #ffffff;
+  --color-tag-badge-max-burden-relief-bg: #f0a233;
+  --color-tag-badge-efficiency-text: #1939b7;
+  --color-tag-badge-efficiency-bg: #dce2f4;
+  --color-tag-badge-transfer-text: #5da8a2;
+  --color-tag-badge-transfer-bg: #e3f0ee;
+  --color-tag-badge-general-text: #ffffff;
+  --color-tag-badge-general-bg: #e8748e;
+
   /* Subway Line Colors */
   --color-subway-line-1: #0052a4; /* 1호선 - PANTONE 286C */
   --color-subway-line-2: #00a84d; /* 2호선 - PANTONE 354C */
