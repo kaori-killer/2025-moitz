@@ -16,7 +16,11 @@ interface TagBadgeProps {
   type: TagBadgeType;
 }
 
+const VALID_TAG_BADGE_TYPES = new Set<string>(['FAIRNESS', 'MAX_BURDEN_RELIEF', 'EFFICIENCY', 'TRANSFER', 'GENERAL']);
+
 function TagBadge({ type }: TagBadgeProps) {
+  if (!VALID_TAG_BADGE_TYPES.has(type)) return null;
+
   return (
     <div css={[flex({ justify: 'center', align: 'center' }), tagBadge.base(type)]}>
       <span css={tagBadge.text()}>{TAG_BADGE_LABEL[type]}</span>
