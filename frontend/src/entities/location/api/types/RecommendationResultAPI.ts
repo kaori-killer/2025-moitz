@@ -1,6 +1,6 @@
-import { TagBadgeType } from '@shared/components/tagBadge/TagBadge';
-
 import { LocationRequirement } from '@entities/location/types/LocationRequirement';
+
+import { TagBadgeType } from '@shared/components/tagBadge/TagBadge';
 
 export type StartingPlaceResponse = {
   id: number;
