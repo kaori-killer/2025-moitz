@@ -28,10 +28,6 @@ const meta = {
       control: { type: 'number' },
       description: '추천 장소까지 평균 소요 시간(분)',
     },
-    isBest: {
-      control: { type: 'boolean' },
-      description: '추천 장소의 best 여부',
-    },
     onClick: {
       action: 'onClick',
     },
@@ -47,7 +43,7 @@ export const Default: Story = {
     tagInfo: '설명입니다.',
     tag: 'GENERAL',
     avgMinutes: 10,
-    isBest: false,
+
     onClick: () => {},
   },
 };
@@ -58,7 +54,7 @@ export const Best: Story = {
     tagInfo: '설명입니다.',
     tag: 'FAIRNESS',
     avgMinutes: 10,
-    isBest: true,
+
     onClick: () => {},
   },
 };

@@ -8,7 +8,6 @@ interface SpotItemProps {
   tagInfo: string;
   tag: TagBadgeType;
   avgMinutes: number;
-  isBest: boolean;
   onClick: () => void;
 }
 
@@ -17,7 +16,6 @@ function SpotItem({
   tagInfo,
   tag,
   avgMinutes,
-  isBest = false,
   onClick,
 }: SpotItemProps) {
   return (
@@ -28,7 +26,7 @@ function SpotItem({
         spotItem.base(),
       ]}
       onClick={onClick}
-      aria-label={`${name} ${isBest ? ' 베스트 장소' : ''}, ${tagInfo}, 평균 이동시간 ${avgMinutes}분`}
+      aria-label={`${name}, ${tagInfo}, 평균 이동시간 ${avgMinutes}분`}
     >
       <div
         css={[

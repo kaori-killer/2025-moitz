@@ -54,7 +54,6 @@ export type RecommendedLocation = {
   y: number;
   name: string;
   avgMinutes: number;
-  isBest: boolean;
   tagInfo: string;
   locationInfo: string;
   tag: TagBadgeType;

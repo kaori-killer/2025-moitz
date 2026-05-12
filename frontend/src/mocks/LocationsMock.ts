@@ -17,7 +17,7 @@ export const RecommendedLocationsMock: RecommendedLocation[] = [
     name: '서울역',
     tagInfo: '서울의 중심역, 교통의 허브',
     avgMinutes: 35,
-    isBest: true,
+
     x: 126.9723,
     y: 37.5563,
     locationInfo: '모든 노선이 모이는 교통의 요지',
@@ -29,7 +29,7 @@ export const RecommendedLocationsMock: RecommendedLocation[] = [
     name: '강남역',
     tagInfo: '유동인구 많은 번화가',
     avgMinutes: 40,
-    isBest: false,
+
     x: 127.0286,
     y: 37.4979,
     locationInfo: '회사, 음식점, 모임장소가 많음',
@@ -41,7 +41,7 @@ export const RecommendedLocationsMock: RecommendedLocation[] = [
     name: '잠실역',
     tagInfo: '롯데월드와 석촌호수 인근',
     avgMinutes: 25,
-    isBest: false,
+
     x: 127.1002,
     y: 37.5133,
     locationInfo: '야경이 예쁘고 주변 시설이 풍부함',
@@ -53,7 +53,7 @@ export const RecommendedLocationsMock: RecommendedLocation[] = [
     name: '홍대입구역',
     tagInfo: '젊음의 거리와 예술의 거리',
     avgMinutes: 20,
-    isBest: false,
+
     x: 126.9239,
     y: 37.5572,
     locationInfo: '공연과 문화 공간이 많아 흥미로움',
@@ -65,7 +65,7 @@ export const RecommendedLocationsMock: RecommendedLocation[] = [
     name: '신촌역',
     tagInfo: '대학교 인근, 맛집 거리',
     avgMinutes: 30,
-    isBest: false,
+
     x: 126.9368,
     y: 37.5551,
     locationInfo: '젊고 활기찬 분위기, 모임 장소로 적절',
@@ -92,7 +92,7 @@ export const LocationsMock: LocationResponse = {
       x: 127.02800140627488,
       name: '강남역',
       avgMinutes: 21,
-      isBest: true,
+  
       tagInfo: '역세권, 편의시설 풍부! 👍😋',
       locationInfo:
         '유명한 곱창집이 있고, 전체적으로 환승을 하지 않는 최적의 지역입니다!',
