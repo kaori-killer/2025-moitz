@@ -15,11 +15,10 @@ function SpotItemList({
   return (
     <ul role="list" css={[flex({ direction: 'column', gap: 20 })]}>
       {recommendedLocations.map((location) => {
-        const { index, name, description, avgMinutes, isBest } = location;
+        const { id, name, description, avgMinutes, isBest } = location;
         return (
-          <li key={index} role="listitem">
+          <li key={id} role="listitem">
             <SpotItem
-              index={index}
               name={name}
               description={description}
               avgMinutes={avgMinutes}

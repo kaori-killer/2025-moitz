@@ -1,11 +1,9 @@
 import Badge from '@shared/components/badge/Badge';
-import MarkerIndex from '@shared/components/markerIndex/MarkerIndex';
 import { flex, typography } from '@shared/styles/default.styled';
 
 import * as spotItem from './spotItem.styled';
 
 interface SpotItemProps {
-  index: number;
   name: string;
   description: string;
   avgMinutes: number;
@@ -14,7 +12,6 @@ interface SpotItemProps {
 }
 
 function SpotItem({
-  index,
   name,
   description,
   avgMinutes,
@@ -31,7 +28,6 @@ function SpotItem({
       onClick={onClick}
       aria-label={`${name} ${isBest ? ' 베스트 장소' : ''}, ${description}, 평균 이동시간 ${avgMinutes}분`}
     >
-      <MarkerIndex index={index} type="recommended" />
       <div
         css={[
           flex({ direction: 'column', gap: 10 }),
