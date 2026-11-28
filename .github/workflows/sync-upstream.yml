@@ -1,0 +1,47 @@
+name: Sync from upstream
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fe-prod
+        uses: actions/checkout@v4
+        with:
+          ref: fe-prod
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Preserve sync workflow file
+        run: cp .github/workflows/sync-upstream.yml /tmp/sync-upstream.yml
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/woowacourse-teams/2025-moitz.git
+          git fetch upstream fe-prod fe-dev
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync fe-dev (force overwrite)
+        run: git push origin upstream/fe-dev:fe-dev --force
+
+      - name: Sync fe-prod (preserve sync workflow)
+        run: |
+          git checkout -B fe-prod upstream/fe-prod
+          mkdir -p .github/workflows
+          cp /tmp/sync-upstream.yml .github/workflows/sync-upstream.yml
+          git add .github/workflows/sync-upstream.yml
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(ci): keep sync-upstream workflow"
+          fi
+          git push origin fe-prod --force
